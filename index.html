@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="북톡 - 책을 미리 읽고, 별점으로 고르고, 함께 이야기하는 독서 커뮤니티">
+  <title>북톡 | 책으로 나누는 이야기</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- 최상단 바: 카카오톡·인스타그램은 실제 주소가 생기면 href를 바꿔주세요 -->
+  <div class="topbar">
+    <div class="inner topbar__inner">
+      <ul class="util-menu">
+        <li><a href="html/mypage.html">마이페이지</a></li>
+        <li><a href="html/login.html">로그인</a></li>
+        <li>
+          <a href="#" target="_blank" rel="noopener" title="카카오톡 문의">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 3.5c-5 0-9 3.1-9 7 0 2.5 1.7 4.7 4.2 5.9l-.9 3.4c-.1.3.3.6.6.4l4-2.7c.4 0 .7.1 1.1.1 5 0 9-3.1 9-7s-4-7.1-9-7.1z" fill="currentColor"/></svg>
+            <span class="util-menu__text">카카오톡 문의</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" target="_blank" rel="noopener" title="인스타그램">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+            <span class="util-menu__text">인스타그램</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 헤더 -->
+  <header class="header" id="header">
+    <div class="inner header__inner">
+      <h1 class="logo">
+        <a href="index.html">
+          <img src="img/logo.svg" alt="" class="logo__mark" width="50" height="50">
+          <span class="logo__text">북<span>톡</span></span>
+        </a>
+      </h1>
+
+      <nav class="gnb" id="gnb" aria-label="주 메뉴">
+        <ul>
+          <li><a href="html/books.html">도서</a></li>
+          <li><a href="#books">분야별</a></li>
+          <li><a href="#club">독서모임</a></li>
+          <li><a href="html/community.html">커뮤니티</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__util">
+        <form class="search" id="searchForm" role="search">
+          <label for="searchInput" class="blind">도서 검색</label>
+          <input type="search" id="searchInput" placeholder="책 제목, 저자 검색">
+          <button type="submit" aria-label="검색">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </form>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="메뉴 열기" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 메인 비주얼 : 추천 도서 슬라이더 -->
+    <section class="hero" aria-label="이번 주 추천 도서">
+      <!-- 좌우 이동 버튼 (화면 양끝, 세로 가운데) -->
+      <button type="button" class="hero__arrow hero__arrow--prev" id="heroPrev" aria-label="이전 추천 도서">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="hero__arrow hero__arrow--next" id="heroNext" aria-label="다음 추천 도서">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <!-- 페이지 표시 점 (하단 가운데) -->
+      <div class="hero__dots" id="heroDots"></div>
+      <div class="inner hero__inner">
+        <div class="hero__text">
+          <p class="hero__eyebrow">이번 주 북톡 추천</p>
+          <h2 class="hero__title" id="heroTitle"></h2>
+          <p class="hero__author" id="heroAuthor"></p>
+          <p class="hero__desc" id="heroDesc"></p>
+          <div class="hero__btns">
+            <button type="button" class="btn btn--primary" id="heroPreview">미리보기</button>
+            <a href="html/book-detail.html" class="btn btn--line" id="heroDetail">자세히 보기</a>
+          </div>
+        </div>
+        <div class="hero__visual" id="heroVisual"></div>
+      </div>
+    </section>
+
+    <!-- 도서 목록 : 분야 탭 + 별점 -->
+    <section class="section books" id="books">
+      <div class="inner">
+        <div class="section__head">
+          <div>
+            <h2 class="section__title">분야별 도서</h2>
+            <p class="section__sub">독자 별점으로 먼저 확인하고, 미리보기로 첫 장을 읽어보세요.</p>
+          </div>
+          <div class="sort">
+            <label for="sortSelect" class="blind">정렬</label>
+            <select id="sortSelect">
+              <option value="rating">별점 높은순</option>
+              <option value="reviews">리뷰 많은순</option>
+              <option value="newest">최신순</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="tabs" role="tablist" id="categoryTabs" aria-label="도서 분야"></div>
+
+        <div class="books__meta">
+          <p class="books__result" id="bookResult" aria-live="polite"></p>
+          <div class="initial-filter">
+            <label for="initialSelect" class="blind">제목 첫 글자로 찾기</label>
+            <select id="initialSelect">
+              <option value="">가나다 · ABC</option>
+              <optgroup label="한글" id="initialKo"></optgroup>
+              <optgroup label="알파벳" id="initialEn"></optgroup>
+            </select>
+          </div>
+        </div>
+        <ul class="book-grid" id="bookGrid"></ul>
+        <div class="books__more">
+          <a href="html/books.html" class="btn-all" id="allBooksLink">
+            전체 책 보기
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <button type="button" class="btn btn--line" id="moreBtn">더 보기</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 이번 주 베스트 -->
+    <section class="section best" id="best">
+      <div class="inner">
+        <div class="section__head">
+          <div>
+            <h2 class="section__title">이번 주 베스트</h2>
+            <p class="section__sub">북톡 독자들이 가장 많이 읽고 평가한 책</p>
+          </div>
+        </div>
+        <div class="best-slider">
+          <button type="button" class="best-slider__btn best-slider__btn--prev" id="bestPrev" aria-label="이전 베스트 도서">&#8249;</button>
+          <ol class="best-list" id="bestList"></ol>
+          <button type="button" class="best-slider__btn best-slider__btn--next" id="bestNext" aria-label="다음 베스트 도서">&#8250;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 독서모임 안내 -->
+    <section class="section club" id="club">
+      <div class="inner">
+        <div class="section__head">
+          <div>
+            <h2 class="section__title">독서모임 안내</h2>
+            <p class="section__sub">같은 책을 읽은 사람들과 한 달에 두 번, 이야기를 나눠요.</p>
+          </div>
+          <a href="html/club.html" class="link-more">전체 모임 보기 &rsaquo;</a>
+        </div>
+
+        <ol class="club-steps">
+          <li><strong>01</strong><span>모임 고르기</span><p>분야·지역·요일에 맞는 모임을 찾아요.</p></li>
+          <li><strong>02</strong><span>참여 신청</span><p>정원 안에서 선착순으로 확정돼요.</p></li>
+          <li><strong>03</strong><span>함께 읽기</span><p>2주 동안 정해진 분량을 읽어요.</p></li>
+          <li><strong>04</strong><span>이야기 나누기</span><p>온·오프라인에서 생각을 나눠요.</p></li>
+        </ol>
+
+        <ul class="club-grid" id="clubGrid"></ul>
+      </div>
+    </section>
+
+    <!-- 소식 받기 -->
+    <section class="newsletter">
+      <div class="inner newsletter__inner">
+        <div>
+          <h2 class="newsletter__title">매주 금요일, 새 책 소식을 받아보세요</h2>
+          <p>신간 미리보기와 새로 열리는 독서모임을 가장 먼저 알려드려요.</p>
+        </div>
+        <form class="newsletter__form" id="newsletterForm">
+          <label for="newsletterEmail" class="blind">이메일</label>
+          <input type="email" id="newsletterEmail" placeholder="이메일 주소" required>
+          <button type="submit" class="btn btn--primary">구독하기</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <div class="inner footer__inner">
+      <div class="footer__brand">
+        <p class="logo logo--footer">북<span>톡</span></p>
+        <p>책으로 나누는 이야기, 북톡</p>
+      </div>
+      <ul class="footer__links">
+        <li><a href="html/about.html">서비스 소개</a></li>
+        <li><a href="html/terms.html">이용약관</a></li>
+        <li><a href="html/privacy.html"><strong>개인정보처리방침</strong></a></li>
+        <li><a href="html/support.html">고객센터</a></li>
+      </ul>
+      <div class="footer__bottom">
+      <address class="footer__info">
+        (주)북톡 · 서울특별시 마포구 책방로 12 · 고객센터 02-000-0000<br>
+        &copy; 2026 BookTalk. All rights reserved.
+      </address>
+      <!-- SNS 링크: 실제 계정 주소가 생기면 href를 바꿔주세요 -->
+      <ul class="footer__sns">
+        <li>
+          <a href="#" target="_blank" rel="noopener" class="sns-btn sns-btn--kakao">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3.5c-5 0-9 3.1-9 7 0 2.5 1.7 4.7 4.2 5.9l-.9 3.4c-.1.3.3.6.6.4l4-2.7c.4 0 .7.1 1.1.1 5 0 9-3.1 9-7s-4-7.1-9-7.1z" fill="currentColor"/></svg>
+            카카오톡 문의
+          </a>
+        </li>
+        <li>
+          <a href="#" target="_blank" rel="noopener" class="sns-btn sns-btn--insta">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+            인스타그램
+          </a>
+        </li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 미리보기 모달 -->
+  <div class="modal" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="previewTitle" hidden>
+    <div class="modal__dim" data-close></div>
+    <div class="modal__box">
+      <button type="button" class="modal__close" data-close aria-label="미리보기 닫기">&times;</button>
+      <div class="preview">
+        <div class="preview__side">
+          <div class="preview__cover" id="previewCover"></div>
+          <h3 class="preview__title" id="previewTitle"></h3>
+          <p class="preview__author" id="previewAuthor"></p>
+          <div class="preview__rating" id="previewRating"></div>
+          <a href="html/book-detail.html" class="btn btn--primary btn--block">도서 상세 보기</a>
+        </div>
+        <div class="preview__reader">
+          <p class="preview__chapter" id="previewChapter"></p>
+          <div class="preview__page" id="previewPage"></div>
+          <div class="preview__nav">
+            <button type="button" class="btn btn--ghost btn--sm" id="pagePrev">&lsaquo; 이전</button>
+            <span id="pageNum"></span>
+            <button type="button" class="btn btn--ghost btn--sm" id="pageNext">다음 &rsaquo;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 알림 토스트 / 맨 위로 -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <button type="button" class="top-btn" id="topBtn" aria-label="맨 위로">&uarr;</button>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

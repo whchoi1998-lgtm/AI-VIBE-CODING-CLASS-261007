@@ -1,0 +1,181 @@
+/* ==========================================================
+   북톡 메인 페이지 (index.html) 전용 스타일
+   ========================================================== */
+
+/* ---------- 메인 비주얼 ---------- */
+.hero {
+  background: linear-gradient(135deg, #f3e9dc 0%, #efe2d0 55%, #e8d6c0 100%);
+  position: relative; overflow: hidden;
+}
+.hero__inner {
+  display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 48px;
+  min-height: 520px; padding: 48px 80px 64px; /* 좌우 80px: 화살표 자리 / 아래 64px: 점 자리 */
+}
+.hero__eyebrow {
+  display: inline-block; padding: 4px 12px; margin-bottom: 20px; border-radius: 999px;
+  background: var(--color-point); color: #fff; font-size: 13px; font-weight: 500;
+}
+.hero__title { font-family: var(--font-serif); font-size: 44px; line-height: 1.25; letter-spacing: -1px; }
+.hero__author { margin-top: 12px; color: var(--color-sub); font-weight: 500; }
+.hero__desc { margin-top: 20px; max-width: 460px; color: #4d4540; font-size: 17px; }
+.hero__btns { display: flex; gap: 10px; margin-top: 32px; flex-wrap: wrap; }
+.hero__btns .btn { border-radius: 0; }
+
+/* 좌우 화살표: 화면 양끝, 세로 가운데 / 얇은 테두리 원 */
+.hero__arrow {
+  position: absolute; top: 50%; z-index: 2; transform: translateY(-50%);
+  display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid rgba(43,38,34,.55); color: var(--color-text); background: transparent;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.hero__arrow svg { display: block; }
+.hero__arrow:hover { background: var(--color-text); border-color: var(--color-text); color: #fff; }
+.hero__arrow--prev { left: 20px; }
+.hero__arrow--next { right: 20px; }
+
+/* 페이지 점: 하단 가운데 / 빈 원, 현재 위치는 채운 원 */
+.hero__dots {
+  position: absolute; left: 50%; bottom: 22px; z-index: 2; transform: translateX(-50%);
+  display: flex; gap: 10px;
+}
+.hero__dots button {
+  width: 9px; height: 9px; border-radius: 50%;
+  border: 1px solid rgba(43,38,34,.55); background: transparent; transition: background .2s;
+}
+.hero__dots button:hover { background: rgba(43,38,34,.3); }
+.hero__dots button.is-active { background: var(--color-text); border-color: var(--color-text); }
+
+.hero__visual { position: relative; height: 420px; display: flex; justify-content: center; align-items: center; }
+.hero__visual .cover { position: absolute; width: 220px; transition: transform .5s, opacity .5s; }
+.hero__visual .cover .cover__title { font-size: 24px; }
+.hero__visual .cover--back { transform: translateX(120px) rotate(8deg) scale(.86); opacity: .55; }
+.hero__visual .cover--front { transform: translateX(-30px) rotate(-3deg); z-index: 1; }
+
+.hero__text > * { transition: opacity .3s; }
+.hero.is-changing .hero__text > h2,
+.hero.is-changing .hero__text > p:not(.hero__eyebrow) { opacity: 0; }
+
+/* ---------- 분야별 도서 하단: 왼쪽 '전체 책 보기' / 가운데 '더 보기' ---------- */
+.books__more {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; margin-top: 48px;
+}
+.books__more .btn-all { justify-self: start; }
+@media (max-width: 640px) {
+  .books__more { grid-template-columns: 1fr; justify-items: center; }
+  .books__more .btn-all { justify-self: center; order: 1; }
+}
+
+/* ---------- 베스트 ---------- */
+.best { background: var(--color-surface); }
+.best-slider { position: relative; --best-cols: 5; --best-gap: 20px; }
+.best-list {
+  display: flex; gap: var(--best-gap);
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  padding: 6px 0 10px; scrollbar-width: none;
+}
+.best-list::-webkit-scrollbar { display: none; }
+.best-item {
+  flex: 0 0 calc((100% - var(--best-gap) * (var(--best-cols) - 1)) / var(--best-cols));
+  scroll-snap-align: start;
+}
+.best-slider__btn {
+  position: absolute; top: 50%; z-index: 2; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--color-surface); border: 1px solid var(--color-line); box-shadow: var(--shadow);
+  font-size: 24px; line-height: 1; transition: opacity .2s, background .2s, color .2s;
+}
+.best-slider__btn:hover { background: var(--color-text); color: #fff; }
+.best-slider__btn:disabled { opacity: 0; pointer-events: none; }
+.best-slider__btn--prev { left: -22px; }
+.best-slider__btn--next { right: -22px; }
+.best-item {
+  position: relative; display: flex; flex-direction: column; gap: 14px; padding: 20px;
+  border: 1px solid var(--color-line); border-radius: var(--radius); background: var(--color-bg);
+  cursor: pointer; transition: box-shadow .2s, transform .2s;
+}
+.best-item:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
+.best-item__rank { font-family: var(--font-serif); font-size: 32px; font-weight: 700; line-height: 1; color: var(--color-primary); }
+.best-item .cover { width: 70%; margin: 0 auto; padding: 12px 10px 10px 16px; }
+.best-item .cover__title { font-size: 14px; }
+.best-item .cover__author { font-size: 10px; }
+.best-item__title { font-weight: 700; line-height: 1.4; }
+.best-item__author { font-size: 13px; color: var(--color-sub); }
+
+/* ---------- 독서모임 ---------- */
+.club-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px;
+}
+.club-steps li {
+  padding: 20px 22px; border-radius: var(--radius); background: #eef1ec; color: var(--color-point);
+}
+.club-steps strong { font-family: var(--font-serif); font-size: 14px; opacity: .6; }
+.club-steps span { display: block; margin: 4px 0; font-size: 18px; font-weight: 700; }
+.club-steps p { font-size: 14px; color: #52665a; }
+
+.club-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.club-card {
+  display: flex; flex-direction: column; padding: 26px; border-radius: var(--radius);
+  background: var(--color-surface); border: 1px solid var(--color-line);
+}
+.club-card__top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.club-card__type {
+  padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 500;
+  background: #eef1ec; color: var(--color-point);
+}
+.club-card__type--online { background: #fbeee9; color: var(--color-primary-dark); }
+.club-card__dday { font-size: 13px; font-weight: 700; color: var(--color-primary); }
+.club-card__name { margin-top: 16px; font-family: var(--font-serif); font-size: 21px; line-height: 1.35; }
+.club-card__book { margin-top: 6px; font-size: 14px; color: var(--color-sub); }
+.club-card__info { margin: 18px 0; padding: 16px 0; border-top: 1px dashed var(--color-line); border-bottom: 1px dashed var(--color-line); font-size: 14px; }
+.club-card__info div { display: flex; gap: 12px; }
+.club-card__info div + div { margin-top: 6px; }
+.club-card__info dt { flex-shrink: 0; width: 44px; color: var(--color-sub); }
+.club-card__info dd { margin: 0; }
+.club-card__seat { display: flex; justify-content: space-between; font-size: 13px; color: var(--color-sub); }
+.club-card__seat strong { color: var(--color-text); }
+.club-card__bar { height: 6px; margin: 8px 0 20px; border-radius: 999px; background: var(--color-line); overflow: hidden; }
+.club-card__bar span { display: block; height: 100%; background: var(--color-point); border-radius: inherit; transition: width .4s; }
+.club-card .btn { margin-top: auto; }
+.club-card .btn.is-joined { background: var(--color-point); }
+
+/* ---------- 뉴스레터 ---------- */
+.newsletter { background: var(--color-point); color: #fff; padding: 56px 0; }
+.newsletter__inner { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+.newsletter__title { font-family: var(--font-serif); font-size: 24px; margin-bottom: 6px; }
+.newsletter p { color: #cbd6ce; }
+.newsletter__form { display: flex; gap: 8px; flex: 0 1 440px; }
+.newsletter__form input {
+  flex: 1; min-width: 0; height: 46px; padding: 0 20px; border: 0; border-radius: 999px; outline: 0;
+  color: var(--color-text);
+}
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 1024px) {
+  .best-slider { --best-cols: 3; }
+  .club-grid { grid-template-columns: repeat(2, 1fr); }
+  .club-steps { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .hero__inner { grid-template-columns: 1fr; gap: 16px; min-height: 0; padding-left: 56px; padding-right: 56px; }
+  .hero__arrow { width: 30px; height: 30px; }
+  .hero__arrow--prev { left: 8px; }
+  .hero__arrow--next { right: 8px; }
+  .hero__visual { order: -1; height: 300px; }
+  .hero__visual .cover { width: 160px; }
+  .hero__visual .cover .cover__title { font-size: 18px; }
+  .hero__visual .cover--back { transform: translateX(80px) rotate(8deg) scale(.86); }
+  .hero__title { font-size: 32px; }
+  .hero__desc { font-size: 16px; }
+}
+
+@media (max-width: 640px) {
+  .best-slider { --best-cols: 2; --best-gap: 12px; }
+  .best-slider__btn { width: 36px; height: 36px; font-size: 20px; }
+  .best-slider__btn--prev { left: -8px; }
+  .best-slider__btn--next { right: -8px; }
+  .club-grid { grid-template-columns: 1fr; }
+  .club-steps { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .club-steps li { padding: 16px; }
+  .newsletter__form { flex-basis: 100%; }
+}

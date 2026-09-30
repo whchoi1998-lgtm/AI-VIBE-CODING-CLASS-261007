@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="북톡 전체 도서 목록 - 분야·별점·첫 글자로 찾고, 새 책 등록을 신청하세요">
+  <title>전체 도서 | 북톡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/books.css">
+</head>
+<body>
+
+  <!-- 최상단 바: 카카오톡·인스타그램은 실제 주소가 생기면 href를 바꿔주세요 -->
+  <div class="topbar">
+    <div class="inner topbar__inner">
+      <ul class="util-menu">
+        <li><a href="mypage.html">마이페이지</a></li>
+        <li><a href="login.html">로그인</a></li>
+        <li>
+          <a href="#" target="_blank" rel="noopener" title="카카오톡 문의">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 3.5c-5 0-9 3.1-9 7 0 2.5 1.7 4.7 4.2 5.9l-.9 3.4c-.1.3.3.6.6.4l4-2.7c.4 0 .7.1 1.1.1 5 0 9-3.1 9-7s-4-7.1-9-7.1z" fill="currentColor"/></svg>
+            <span class="util-menu__text">카카오톡 문의</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" target="_blank" rel="noopener" title="인스타그램">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+            <span class="util-menu__text">인스타그램</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 헤더 -->
+  <header class="header" id="header">
+    <div class="inner header__inner">
+      <h1 class="logo">
+        <a href="../index.html">
+          <img src="../img/logo.svg" alt="" class="logo__mark" width="50" height="50">
+          <span class="logo__text">북<span>톡</span></span>
+        </a>
+      </h1>
+
+      <nav class="gnb" id="gnb" aria-label="주 메뉴">
+        <ul>
+          <li><a href="books.html" aria-current="page">도서</a></li>
+          <li><a href="../index.html#books">분야별</a></li>
+          <li><a href="../index.html#club">독서모임</a></li>
+          <li><a href="community.html">커뮤니티</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__util">
+        <form class="search" id="searchForm" role="search">
+          <label for="searchInput" class="blind">도서 검색</label>
+          <input type="search" id="searchInput" placeholder="책 제목, 저자 검색">
+          <button type="submit" aria-label="검색">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </form>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="메뉴 열기" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 페이지 제목 -->
+    <section class="page-head">
+      <div class="inner">
+        <nav class="breadcrumb" aria-label="현재 위치">
+          <ol>
+            <li><a href="../index.html">홈</a></li>
+            <li aria-current="page">전체 도서</li>
+          </ol>
+        </nav>
+        <div class="page-head__row">
+          <div>
+            <h2 class="page-head__title">전체 도서</h2>
+            <p class="page-head__desc">북톡에 등록된 모든 책을 분야·별점·첫 글자로 찾아보세요.</p>
+          </div>
+          <dl class="page-stats" id="pageStats"></dl>
+        </div>
+        <div class="page-head__links">
+          <a href="#list" class="chip-link">책 목록</a>
+          <a href="#register" class="chip-link">새 책 등록 안내</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 책 목록 -->
+    <section class="section list" id="list">
+      <div class="inner">
+        <div class="tabs" role="tablist" id="categoryTabs" aria-label="도서 분야"></div>
+
+        <div class="toolbar">
+          <div class="toolbar__left">
+            <p class="books__result" id="bookResult" aria-live="polite"></p>
+            <div class="initial-filter">
+              <label for="initialSelect" class="blind">제목 첫 글자로 찾기</label>
+              <select id="initialSelect">
+                <option value="">가나다 · ABC</option>
+                <optgroup label="한글" id="initialKo"></optgroup>
+                <optgroup label="알파벳" id="initialEn"></optgroup>
+              </select>
+            </div>
+            <div class="initial-filter">
+              <label for="ratingSelect" class="blind">최소 별점</label>
+              <select id="ratingSelect">
+                <option value="0">별점 전체</option>
+                <option value="4.5">★ 4.5 이상</option>
+                <option value="4">★ 4.0 이상</option>
+                <option value="3.5">★ 3.5 이상</option>
+              </select>
+            </div>
+            <button type="button" class="reset-btn" id="resetBtn" hidden>필터 초기화</button>
+          </div>
+
+          <div class="toolbar__right">
+            <div class="sort">
+              <label for="sortSelect" class="blind">정렬</label>
+              <select id="sortSelect">
+                <option value="rating">별점 높은순</option>
+                <option value="reviews">리뷰 많은순</option>
+                <option value="newest">최신 등록순</option>
+                <option value="title">제목 가나다순</option>
+              </select>
+            </div>
+            <div class="view-toggle" role="group" aria-label="보기 방식">
+              <button type="button" data-view="grid" aria-pressed="true" title="바둑판 보기">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1" fill="currentColor"/><rect x="13" y="4" width="7" height="7" rx="1" fill="currentColor"/><rect x="4" y="13" width="7" height="7" rx="1" fill="currentColor"/><rect x="13" y="13" width="7" height="7" rx="1" fill="currentColor"/></svg>
+                <span class="blind">바둑판 보기</span>
+              </button>
+              <button type="button" data-view="list" aria-pressed="false" title="목록 보기">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="4" y="5" width="16" height="3" rx="1" fill="currentColor"/><rect x="4" y="10.5" width="16" height="3" rx="1" fill="currentColor"/><rect x="4" y="16" width="16" height="3" rx="1" fill="currentColor"/></svg>
+                <span class="blind">목록 보기</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <ul class="book-grid" id="bookGrid"></ul>
+        <nav class="pagination" id="pagination" aria-label="페이지 이동"></nav>
+      </div>
+    </section>
+
+    <!-- 새 책 등록 안내 -->
+    <section class="section register" id="register">
+      <div class="inner">
+        <div class="section__head">
+          <div>
+            <h2 class="section__title">새 책 등록 안내</h2>
+            <p class="section__sub">찾는 책이 없나요? 신청해 주시면 편집팀이 검토 후 북톡에 등록해 드려요.</p>
+          </div>
+          <p class="register__schedule">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            매주 월요일 오전 10시 새 책 업데이트
+          </p>
+        </div>
+
+        <!-- 등록 절차 -->
+        <ol class="reg-steps">
+          <li>
+            <span class="reg-steps__num">STEP 1</span>
+            <strong>등록 신청</strong>
+            <p>아래 양식에 도서 정보를 입력해 신청해요.</p>
+          </li>
+          <li>
+            <span class="reg-steps__num">STEP 2</span>
+            <strong>편집팀 검토</strong>
+            <p>등록 기준에 맞는지 3~5일 동안 확인해요.</p>
+          </li>
+          <li>
+            <span class="reg-steps__num">STEP 3</span>
+            <strong>등록 · 미리보기 준비</strong>
+            <p>출판사와 협의해 첫 장 미리보기를 준비해요.</p>
+          </li>
+          <li>
+            <span class="reg-steps__num">STEP 4</span>
+            <strong>알림 발송</strong>
+            <p>등록이 끝나면 입력한 이메일로 알려드려요.</p>
+          </li>
+        </ol>
+
+        <div class="register__body">
+          <!-- 등록 기준 + 최근 등록된 새 책 -->
+          <div class="register__info">
+            <div class="info-box">
+              <h3 class="info-box__title">등록 기준</h3>
+              <ul class="check-list">
+                <li>국내에서 정식 출간되어 <strong>ISBN</strong>이 있는 책</li>
+                <li>출간 후 <strong>3년 이내</strong>의 도서 (스테디셀러는 예외)</li>
+                <li>북톡 분야(소설·에세이·인문·경제경영·과학·자기계발)에 속하는 책</li>
+                <li>이미 등록된 책이나 절판 도서는 등록되지 않아요</li>
+              </ul>
+            </div>
+
+            <div class="info-box">
+              <div class="info-box__head">
+                <h3 class="info-box__title">최근 등록된 새 책</h3>
+                <button type="button" class="link-more" id="showNewest">최신순으로 보기 &rsaquo;</button>
+              </div>
+              <ul class="new-books" id="newBooks"></ul>
+            </div>
+          </div>
+
+          <!-- 등록 신청 양식 -->
+          <form class="reg-form" id="regForm" novalidate>
+            <h3 class="reg-form__title">새 책 등록 신청</h3>
+            <p class="reg-form__desc"><span class="req">*</span> 표시는 꼭 입력해 주세요.</p>
+
+            <div class="field">
+              <label for="regTitle">도서명 <span class="req">*</span></label>
+              <input type="text" id="regTitle" name="title" required maxlength="60" placeholder="예) 달이 머무는 서점">
+              <p class="field__error"></p>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="regAuthor">저자 <span class="req">*</span></label>
+                <input type="text" id="regAuthor" name="author" required maxlength="30">
+                <p class="field__error"></p>
+              </div>
+              <div class="field">
+                <label for="regPublisher">출판사</label>
+                <input type="text" id="regPublisher" name="publisher" maxlength="30">
+                <p class="field__error"></p>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="regIsbn">ISBN (13자리)</label>
+                <input type="text" id="regIsbn" name="isbn" inputmode="numeric" maxlength="17" placeholder="979-11-0000-000-0">
+                <p class="field__error"></p>
+              </div>
+              <div class="field">
+                <label for="regCategory">분야 <span class="req">*</span></label>
+                <select id="regCategory" name="category" required>
+                  <option value="">분야 선택</option>
+                </select>
+                <p class="field__error"></p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="regReason">추천 이유</label>
+              <textarea id="regReason" name="reason" rows="3" maxlength="200" placeholder="이 책을 북톡에서 함께 읽고 싶은 이유를 적어주세요."></textarea>
+              <p class="field__count"><span id="reasonCount">0</span> / 200</p>
+            </div>
+            <div class="field">
+              <label for="regEmail">알림 받을 이메일 <span class="req">*</span></label>
+              <input type="email" id="regEmail" name="email" required placeholder="booktalk@example.com">
+              <p class="field__error"></p>
+            </div>
+            <label class="agree">
+              <input type="checkbox" id="regAgree" name="agree">
+              <span>등록 결과 안내를 위한 이메일 수집에 동의합니다. <span class="req">*</span></span>
+            </label>
+            <p class="field__error" id="agreeError"></p>
+            <button type="submit" class="btn btn--primary btn--block">등록 신청하기</button>
+          </form>
+        </div>
+
+        <!-- 내 신청 현황 -->
+        <div class="my-requests" id="myRequests" hidden>
+          <h3 class="info-box__title">내 신청 현황</h3>
+          <ul class="request-list" id="requestList"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <div class="inner footer__inner">
+      <div class="footer__brand">
+        <p class="logo logo--footer">북<span>톡</span></p>
+        <p>책으로 나누는 이야기, 북톡</p>
+      </div>
+      <ul class="footer__links">
+        <li><a href="about.html">서비스 소개</a></li>
+        <li><a href="terms.html">이용약관</a></li>
+        <li><a href="privacy.html"><strong>개인정보처리방침</strong></a></li>
+        <li><a href="support.html">고객센터</a></li>
+      </ul>
+      <div class="footer__bottom">
+        <address class="footer__info">
+          (주)북톡 · 서울특별시 마포구 책방로 12 · 고객센터 02-000-0000<br>
+          &copy; 2026 BookTalk. All rights reserved.
+        </address>
+        <!-- SNS 링크: 실제 계정 주소가 생기면 href를 바꿔주세요 -->
+        <ul class="footer__sns">
+          <li>
+            <a href="#" target="_blank" rel="noopener" class="sns-btn sns-btn--kakao">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3.5c-5 0-9 3.1-9 7 0 2.5 1.7 4.7 4.2 5.9l-.9 3.4c-.1.3.3.6.6.4l4-2.7c.4 0 .7.1 1.1.1 5 0 9-3.1 9-7s-4-7.1-9-7.1z" fill="currentColor"/></svg>
+              카카오톡 문의
+            </a>
+          </li>
+          <li>
+            <a href="#" target="_blank" rel="noopener" class="sns-btn sns-btn--insta">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+              인스타그램
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 미리보기 모달 -->
+  <div class="modal" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="previewTitle" hidden>
+    <div class="modal__dim" data-close></div>
+    <div class="modal__box">
+      <button type="button" class="modal__close" data-close aria-label="미리보기 닫기">&times;</button>
+      <div class="preview">
+        <div class="preview__side">
+          <div class="preview__cover" id="previewCover"></div>
+          <h3 class="preview__title" id="previewTitle"></h3>
+          <p class="preview__author" id="previewAuthor"></p>
+          <div class="preview__rating" id="previewRating"></div>
+          <a href="book-detail.html" class="btn btn--primary btn--block">도서 상세 보기</a>
+        </div>
+        <div class="preview__reader">
+          <p class="preview__chapter" id="previewChapter"></p>
+          <div class="preview__page" id="previewPage"></div>
+          <div class="preview__nav">
+            <button type="button" class="btn btn--ghost btn--sm" id="pagePrev">&lsaquo; 이전</button>
+            <span id="pageNum"></span>
+            <button type="button" class="btn btn--ghost btn--sm" id="pageNext">다음 &rsaquo;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 알림 토스트 / 맨 위로 -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <button type="button" class="top-btn" id="topBtn" aria-label="맨 위로">&uarr;</button>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/books.js"></script>
+</body>
+</html>
