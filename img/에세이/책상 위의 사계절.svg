@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#7fa3bd"/><stop offset="1" stop-color="#4a6f88"/></linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#bg)"/>
+  <!-- 창문 (사계절 4칸) -->
+  <rect x="60" y="160" width="180" height="170" rx="6" fill="#f4efe6"/>
+  <rect x="70" y="170" width="76" height="71" fill="#f9dfe6"/>
+  <rect x="154" y="170" width="76" height="71" fill="#cfe8f5"/>
+  <rect x="70" y="249" width="76" height="71" fill="#f6dcc0"/>
+  <rect x="154" y="249" width="76" height="71" fill="#e8eef3"/>
+  <!-- 봄: 꽃 -->
+  <g fill="#e88aa4"><circle cx="100" cy="200" r="7"/><circle cx="114" cy="200" r="7"/><circle cx="107" cy="190" r="7"/><circle cx="107" cy="210" r="7"/></g><circle cx="107" cy="200" r="4" fill="#f2c94c"/>
+  <!-- 여름: 해 -->
+  <circle cx="192" cy="205" r="14" fill="#f2a93b"/>
+  <!-- 가을: 잎 -->
+  <path d="M95 300c0-24 20-36 34-38-2 16-10 34-34 38z" fill="#d9773a"/><path d="M95 300l24-28" stroke="#9b4e1f" stroke-width="2"/>
+  <!-- 겨울: 눈 결정 -->
+  <g stroke="#7fa3bd" stroke-width="3" stroke-linecap="round"><path d="M192 268v36M176 277l32 18M176 295l32-18"/></g>
+  <!-- 책상 -->
+  <rect x="20" y="350" width="260" height="12" rx="3" fill="#3a2a1e"/>
+  <rect x="190" y="320" width="50" height="30" rx="3" fill="#2b2622"/>
+  <rect x="60" y="334" width="60" height="16" fill="#c2553a"/><rect x="66" y="326" width="50" height="8" fill="#f2a93b"/>
+  <text x="28" y="72" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="30" font-weight="700" fill="#fff">책상 위의</text>
+  <text x="28" y="112" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="30" font-weight="700" fill="#fff">사계절</text>
+  <rect x="28" y="128" width="34" height="3" fill="#f9dfe6"/>
+  <text x="28" y="425" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="15" fill="#fff" opacity=".9">배유나 에세이</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9dfe3"/><stop offset="1" stop-color="#9aa9b3"/></linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#bg)"/>
+  <!-- 산 -->
+  <path d="M0 260l60-50 50 30 60-60 70 50 60-30v120H0z" fill="#b5c1c8"/>
+  <!-- 도시 -->
+  <g fill="#5c6e7a">
+    <rect x="20" y="240" width="34" height="80"/><rect x="58" y="220" width="26" height="100"/><rect x="88" y="250" width="40" height="70"/>
+    <rect x="190" y="230" width="30" height="90"/><rect x="224" y="210" width="22" height="110"/><rect x="250" y="245" width="36" height="75"/>
+  </g>
+  <!-- 기와 성문 -->
+  <path d="M120 262h60l14 14h-88z" fill="#3a4852"/>
+  <rect x="126" y="276" width="48" height="44" fill="#4a5a66"/>
+  <path d="M142 320v-22a8 8 0 0 1 16 0v22z" fill="#2b363e"/>
+  <!-- 강과 다리 -->
+  <rect x="0" y="320" width="300" height="130" fill="#6f8794"/>
+  <path d="M0 340h300" stroke="#3a4852" stroke-width="6"/>
+  <g fill="none" stroke="#3a4852" stroke-width="6"><path d="M10 380a40 40 0 0 1 80 0"/><path d="M110 380a40 40 0 0 1 80 0"/><path d="M210 380a40 40 0 0 1 80 0"/></g>
+  <g fill="#fff" opacity=".3"><rect x="30" y="400" width="40" height="3"/><rect x="150" y="410" width="60" height="3"/><rect x="230" y="398" width="30" height="3"/></g>
+  <text x="28" y="72" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="30" font-weight="700" fill="#2b363e">도시를 걷는</text>
+  <text x="28" y="112" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="30" font-weight="700" fill="#2b363e">역사</text>
+  <rect x="28" y="128" width="34" height="3" fill="#c2553a"/>
+  <text x="28" y="436" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="15" fill="#fff">강태윤 지음</text>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dcc0"/><stop offset="1" stop-color="#d4a373"/></linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#bg)"/>
+  <!-- 떠오르는 해 -->
+  <path d="M60 300a90 90 0 0 1 180 0z" fill="#f2a93b" opacity=".55"/>
+  <path d="M90 300a60 60 0 0 1 120 0z" fill="#f2a93b"/>
+  <!-- 커피잔 -->
+  <path d="M100 300h100l-10 70a20 20 0 0 1-20 18h-40a20 20 0 0 1-20-18z" fill="#fff"/>
+  <path d="M198 316h12a18 18 0 0 1 0 36h-16" fill="none" stroke="#fff" stroke-width="9"/>
+  <ellipse cx="150" cy="302" rx="48" ry="7" fill="#7a4a2a"/>
+  <ellipse cx="150" cy="396" rx="80" ry="8" fill="#a87a4c"/>
+  <!-- 김 -->
+  <g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".85"><path d="M135 280c-8-12 8-20 0-32"/><path d="M160 276c-8-12 8-20 0-32"/></g>
+  <text x="28" y="74" font-family="Georgia,'Times New Roman',serif" font-size="40" font-style="italic" font-weight="700" fill="#5a3a1e">Slow</text>
+  <text x="28" y="118" font-family="Georgia,'Times New Roman',serif" font-size="40" font-style="italic" font-weight="700" fill="#5a3a1e">Morning</text>
+  <rect x="28" y="134" width="34" height="3" fill="#c2553a"/>
+  <text x="28" y="425" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="15" fill="#5a3a1e">한유리 에세이</text>
+</svg>

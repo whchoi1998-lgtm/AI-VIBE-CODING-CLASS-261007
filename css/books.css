@@ -3,31 +3,6 @@
    (도서 카드 · 탭 · 필터 · 미리보기 모달은 common.css 공용)
    ========================================================== */
 
-/* ---------- 페이지 제목 ---------- */
-.page-head { padding: 40px 0 36px; background: linear-gradient(135deg, #f3e9dc 0%, #efe2d0 55%, #e8d6c0 100%); }
-.page-head__row {
-  display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap;
-  margin-top: 14px;
-}
-.page-head__title { font-family: var(--font-serif); font-size: 38px; line-height: 1.25; }
-.page-head__desc { margin-top: 8px; color: #4d4540; }
-
-.page-stats { display: flex; gap: 12px; margin: 0; }
-.page-stats div {
-  min-width: 112px; padding: 14px 18px; border-radius: var(--radius);
-  background: rgba(255,255,255,.7); text-align: center;
-}
-.page-stats dt { font-size: 12px; color: var(--color-sub); }
-.page-stats dd { margin: 2px 0 0; font-family: var(--font-serif); font-size: 24px; font-weight: 700; }
-.page-stats dd small { font-family: var(--font-sans); font-size: 13px; font-weight: 500; margin-left: 2px; }
-
-.page-head__links { display: flex; gap: 8px; margin-top: 24px; }
-.chip-link {
-  display: inline-flex; align-items: center; height: 34px; padding: 0 16px; border-radius: 999px;
-  border: 1px solid rgba(43,38,34,.25); font-size: 14px; transition: .2s;
-}
-.chip-link:hover { background: var(--color-text); border-color: var(--color-text); color: #fff; }
-
 /* ---------- 목록 도구 모음 ---------- */
 .list { padding-top: 48px; }
 .toolbar {
@@ -117,7 +92,7 @@
 }
 .new-books li:first-child { border-top: 0; padding-top: 0; }
 .new-books .cover { padding: 0; border-radius: 2px 4px 4px 2px; box-shadow: 0 3px 8px rgba(43,38,34,.2); }
-.new-books .cover > * { display: none; }
+.new-books .cover > :not(img) { display: none; }
 .new-books__title { font-weight: 700; font-size: 15px; line-height: 1.4; }
 .new-books li:hover .new-books__title { color: var(--color-primary); }
 .new-books__author { font-size: 13px; color: var(--color-sub); }
@@ -155,14 +130,11 @@
 }
 
 @media (max-width: 860px) {
-  .page-head__title { font-size: 30px; }
   .reg-steps { grid-template-columns: 1fr 1fr; }
   .reg-steps li:nth-child(2)::after { display: none; }
 }
 
 @media (max-width: 640px) {
-  .page-stats { width: 100%; }
-  .page-stats div { flex: 1; min-width: 0; padding: 12px 8px; }
   .toolbar__right { width: 100%; justify-content: space-between; }
   .book-row { grid-template-columns: 72px 1fr; gap: 16px; }
   .book-row__side { grid-column: 2; align-items: flex-start; flex-direction: row; }

@@ -244,62 +244,14 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ======================================================
      5. 독서모임 안내
      ====================================================== */
+  // 메인에는 3개만 소개 (전체는 독서모임 페이지)
   const clubGrid = document.getElementById('clubGrid');
-  const joinedClubs = new Set();
-
-  function dday(dateStr) {
-    const today = new Date(); today.setHours(0, 0, 0, 0);
-    const diff = Math.round((new Date(dateStr + 'T00:00:00') - today) / 86400000);
-    if (diff > 0) return `D-${diff}`;
-    if (diff === 0) return 'D-DAY';
-    return '진행 중';
-  }
-
-  function renderClubs() {
-    clubGrid.innerHTML = CLUBS.map(club => {
-      const book = findBook(club.bookId);
-      const isJoined = joinedClubs.has(club.id);
-      const count = club.joined + (isJoined ? 1 : 0);
-      const isFull = count >= club.capacity && !isJoined;
-      const percent = Math.min(100, (count / club.capacity) * 100);
-      const btnText = isJoined ? '신청 완료 · 취소하기' : isFull ? '모집 마감' : '참여 신청';
-
-      return `
-        <li class="club-card">
-          <div class="club-card__top">
-            <span class="club-card__type ${club.type === 'online' ? 'club-card__type--online' : ''}">
-              ${club.type === 'online' ? '온라인' : '오프라인'}
-            </span>
-            <span class="club-card__dday">${dday(club.startDate)}</span>
-          </div>
-          <h3 class="club-card__name">${escapeHTML(club.name)}</h3>
-          <p class="club-card__book">함께 읽는 책 · 『${escapeHTML(book.title)}』</p>
-          <dl class="club-card__info">
-            <div><dt>일정</dt><dd>${club.schedule}</dd></div>
-            <div><dt>시작</dt><dd>${club.startDate.replace(/-/g, '.')}</dd></div>
-            <div><dt>장소</dt><dd>${escapeHTML(club.place)}</dd></div>
-            <div><dt>진행</dt><dd>${escapeHTML(club.leader)}</dd></div>
-          </dl>
-          <p class="club-card__seat"><span>모집 현황</span><span><strong>${count}</strong> / ${club.capacity}명</span></p>
-          <div class="club-card__bar"><span style="width:${percent}%"></span></div>
-          <button type="button" class="btn btn--primary btn--block ${isJoined ? 'is-joined' : ''}"
-            data-club="${club.id}" ${isFull ? 'disabled' : ''}>${btnText}</button>
-        </li>`;
-    }).join('');
-  }
+  const renderClubs = () => { clubGrid.innerHTML = CLUBS.slice(0, 3).map(clubCardHTML).join(''); };
 
   clubGrid.addEventListener('click', e => {
     const btn = e.target.closest('[data-club]');
     if (!btn || btn.disabled) return;
-    const id = Number(btn.dataset.club);
-    const club = CLUBS.find(c => c.id === id);
-    if (joinedClubs.has(id)) {
-      joinedClubs.delete(id);
-      showToast(`'${club.name}' 신청을 취소했어요.`);
-    } else {
-      joinedClubs.add(id);
-      showToast(`'${club.name}' 참여 신청이 완료됐어요!`);
-    }
+    showToast(toggleClubJoin(Number(btn.dataset.club)));
     renderClubs();
   });
 

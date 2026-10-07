@@ -1,0 +1,51 @@
+/* ==========================================================
+   북톡 독서모임 페이지 (html/club.html) 전용 스타일
+   (서브 페이지 제목 · 모임 카드 · 탭은 common.css 공용)
+   ========================================================== */
+
+.club-how { padding-bottom: 24px; }
+.club-how .club-steps { margin-bottom: 0; }
+.club-list { padding-top: 56px; }
+.club-list .section__sub { font-weight: 500; }
+
+/* ---------- 자주 묻는 질문 + 모임 열기 ---------- */
+.club-extra { background: var(--color-surface); }
+.club-extra__grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: start; }
+.club-extra .section__title { margin-bottom: 20px; }
+
+.faq details { border-bottom: 1px solid var(--color-line); }
+.faq details:first-child { border-top: 1px solid var(--color-line); }
+.faq summary {
+  position: relative; padding: 18px 40px 18px 0; font-weight: 700; cursor: pointer; list-style: none;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: '+'; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+  font-size: 22px; font-weight: 400; color: var(--color-sub); transition: transform .2s;
+}
+.faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); color: var(--color-primary); }
+.faq summary:hover { color: var(--color-primary); }
+.faq details p { padding: 0 0 18px; color: #4d4540; font-size: 15px; }
+
+.host-box { padding: 32px; border-radius: 16px; background: var(--color-point); color: #fff; }
+.host-box__eyebrow {
+  display: inline-block; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,.15);
+  font-size: 12px; font-weight: 700;
+}
+.host-box__title { margin-top: 14px; font-family: var(--font-serif); font-size: 24px; line-height: 1.35; }
+.host-box__desc { margin-top: 8px; color: #cbd6ce; font-size: 15px; }
+.host-box__list { margin: 18px 0 24px; }
+.host-box__list li { position: relative; padding-left: 18px; font-size: 15px; }
+.host-box__list li + li { margin-top: 6px; }
+.host-box__list li::before { content: '✓'; position: absolute; left: 0; color: var(--color-star); }
+.host-box .btn-all { border-color: #fff; color: var(--color-text); }
+.host-box .btn-all:hover { background: var(--color-star); border-color: var(--color-star); color: var(--color-text); }
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 860px) {
+  .club-extra__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .host-box { padding: 26px 22px; }
+  .host-box .btn-all { width: 100%; justify-content: center; }
+}

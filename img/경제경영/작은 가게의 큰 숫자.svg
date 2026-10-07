@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#36553f"/><stop offset="1" stop-color="#1c2e24"/></linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#bg)"/>
+  <!-- 큰 숫자 -->
+  <text x="150" y="245" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="78" font-weight="700" fill="#f2c94c">1,280</text>
+  <!-- 가게 -->
+  <rect x="70" y="300" width="160" height="110" fill="#f4efe6"/>
+  <g>
+    <path d="M60 300h180l-8-34H68z" fill="#c2553a"/>
+    <g fill="#f4efe6"><path d="M86 266h20l-2 34H84z"/><path d="M126 266h20l0 34h-20z"/><path d="M166 266h20l2 34h-20z"/><path d="M206 266h18l4 34h-20z"/></g>
+  </g>
+  <path d="M60 300q15 14 30 0t30 0 30 0 30 0 30 0 30 0" fill="#c2553a"/>
+  <rect x="88" y="326" width="56" height="44" fill="#cfe0d4"/>
+  <rect x="160" y="326" width="48" height="84" fill="#36553f"/>
+  <circle cx="198" cy="370" r="3" fill="#f2c94c"/>
+  <!-- 그래프 화살표 -->
+  <path d="M40 170l40-30 30 18 50-46" fill="none" stroke="#f2c94c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".5" transform="translate(110 -20)"/>
+  <text x="28" y="72" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="30" font-weight="700" fill="#fff">작은 가게의</text>
+  <text x="28" y="112" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="30" font-weight="700" fill="#fff">큰 숫자</text>
+  <rect x="28" y="128" width="34" height="3" fill="#f2c94c"/>
+  <text x="28" y="436" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="15" fill="#fff" opacity=".9">최민재 지음</text>
+</svg>

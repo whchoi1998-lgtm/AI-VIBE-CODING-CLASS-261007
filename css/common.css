@@ -136,6 +136,8 @@ address { font-style: normal; }
   background: var(--color-primary); transition: width .2s;
 }
 .gnb a:hover::after { width: 100%; }
+.gnb a[aria-current="page"] { color: var(--color-primary); }
+.gnb a[aria-current="page"]::after { width: 100%; }
 
 .header__util { margin-left: auto; display: flex; align-items: center; gap: 8px; }
 
@@ -186,6 +188,10 @@ address { font-style: normal; }
   content: ''; position: absolute; top: 0; bottom: 0; left: 7px; width: 2px;
   background: rgba(255,255,255,.25);
 }
+/* 이미지 표지: 여백 없이 꽉 채움 */
+.cover--img { padding: 0 !important; background: #eee; }
+.cover--img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cover--img::after { z-index: 1; } /* 책등 하이라이트는 이미지 위에 */
 .cover__title { font-family: var(--font-serif); font-size: 18px; font-weight: 700; line-height: 1.35; }
 .cover__author { font-size: 12px; opacity: .85; }
 .cover__deco {
@@ -246,7 +252,7 @@ address { font-style: normal; }
 .book-card__thumb .cover__title { font-size: 16px; }
 .book-card:hover .book-card__thumb .cover { transform: translateY(-6px); }
 .book-card__badge {
-  position: absolute; top: 10px; left: 6%; z-index: 1;
+  position: absolute; top: 10px; right: 6%; z-index: 2; /* 표지 제목(왼쪽 위)을 가리지 않게 오른쪽 */
   padding: 2px 8px; border-radius: 4px; background: var(--color-primary); color: #fff;
   font-size: 12px; font-weight: 700;
 }
@@ -321,6 +327,87 @@ address { font-style: normal; }
 .breadcrumb ol { display: flex; gap: 8px; font-size: 13px; color: var(--color-sub); }
 .breadcrumb li + li::before { content: '›'; margin-right: 8px; }
 .breadcrumb a:hover { color: var(--color-primary); }
+
+/* ---------- 독서모임 카드 (메인 · 독서모임 페이지 공용) ---------- */
+.club-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px;
+}
+.club-steps li {
+  padding: 20px 22px; border-radius: var(--radius); background: #eef1ec; color: var(--color-point);
+}
+.club-steps strong { font-family: var(--font-serif); font-size: 14px; opacity: .6; }
+.club-steps span { display: block; margin: 4px 0; font-size: 18px; font-weight: 700; }
+.club-steps p { font-size: 14px; color: #52665a; }
+
+.club-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.club-card {
+  display: flex; flex-direction: column; padding: 26px; border-radius: var(--radius);
+  background: var(--color-surface); border: 1px solid var(--color-line);
+}
+.club-card__top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.club-card__type {
+  padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 500;
+  background: #eef1ec; color: var(--color-point);
+}
+.club-card__type--online { background: #fbeee9; color: var(--color-primary-dark); }
+.club-card__dday { font-size: 13px; font-weight: 700; color: var(--color-primary); }
+.club-card__name { margin-top: 16px; font-family: var(--font-serif); font-size: 21px; line-height: 1.35; }
+.club-card__book { margin-top: 6px; font-size: 14px; color: var(--color-sub); }
+.club-card__info { margin: 18px 0; padding: 16px 0; border-top: 1px dashed var(--color-line); border-bottom: 1px dashed var(--color-line); font-size: 14px; }
+.club-card__info div { display: flex; gap: 12px; }
+.club-card__info div + div { margin-top: 6px; }
+.club-card__info dt { flex-shrink: 0; width: 44px; color: var(--color-sub); }
+.club-card__info dd { margin: 0; }
+.club-card__seat { display: flex; justify-content: space-between; font-size: 13px; color: var(--color-sub); }
+.club-card__seat strong { color: var(--color-text); }
+.club-card__bar { height: 6px; margin: 8px 0 20px; border-radius: 999px; background: var(--color-line); overflow: hidden; }
+.club-card__bar span { display: block; height: 100%; background: var(--color-point); border-radius: inherit; transition: width .4s; }
+.club-card .btn { margin-top: auto; }
+.club-card .btn.is-joined { background: var(--color-point); }
+
+.club-card__book a:hover { color: var(--color-primary); text-decoration: underline; }
+@media (max-width: 1024px) {
+  .club-grid { grid-template-columns: repeat(2, 1fr); }
+  .club-steps { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .club-grid { grid-template-columns: 1fr; }
+  .club-steps { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .club-steps li { padding: 16px; }
+}
+
+/* ---------- 서브 페이지 제목 띠 (책 목록 · 분야별 · 독서모임 · 커뮤니티) ---------- */
+.page-head { padding: 40px 0 36px; background: linear-gradient(135deg, #f3e9dc 0%, #efe2d0 55%, #e8d6c0 100%); }
+.page-head__row {
+  display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap;
+  margin-top: 14px;
+}
+.page-head__title { font-family: var(--font-serif); font-size: 38px; line-height: 1.25; }
+.page-head__desc { margin-top: 8px; color: #4d4540; }
+
+.page-stats { display: flex; gap: 12px; margin: 0; }
+.page-stats div {
+  min-width: 112px; padding: 14px 18px; border-radius: var(--radius);
+  background: rgba(255,255,255,.7); text-align: center;
+}
+.page-stats dt { font-size: 12px; color: var(--color-sub); }
+.page-stats dd { margin: 2px 0 0; font-family: var(--font-serif); font-size: 24px; font-weight: 700; }
+.page-stats dd small { font-family: var(--font-sans); font-size: 13px; font-weight: 500; margin-left: 2px; }
+
+.page-head__links { display: flex; gap: 8px; margin-top: 24px; }
+.chip-link {
+  display: inline-flex; align-items: center; height: 34px; padding: 0 16px; border-radius: 999px;
+  border: 1px solid rgba(43,38,34,.25); font-size: 14px; transition: .2s;
+}
+.chip-link:hover { background: var(--color-text); border-color: var(--color-text); color: #fff; }
+
+@media (max-width: 860px) {
+  .page-head__title { font-size: 30px; }
+}
+@media (max-width: 640px) {
+  .page-stats { width: 100%; }
+  .page-stats div { flex: 1; min-width: 0; padding: 12px 8px; }
+}
 
 /* ---------- 푸터 ---------- */
 .footer { background: #231f1c; color: #b9b0a6; padding: 48px 0; font-size: 14px; }

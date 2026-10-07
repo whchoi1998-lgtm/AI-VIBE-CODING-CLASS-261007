@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="북톡 독서모임 - 온라인·오프라인 독서모임을 찾고 참여 신청하세요">
+  <title>독서모임 | 북톡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/club.css">
+</head>
+<body>
+
+  <!-- 최상단 바: 카카오톡·인스타그램은 실제 주소가 생기면 href를 바꿔주세요 -->
+  <div class="topbar">
+    <div class="inner topbar__inner">
+      <ul class="util-menu">
+        <li><a href="mypage.html">마이페이지</a></li>
+        <li><a href="login.html">로그인</a></li>
+        <li>
+          <a href="#" target="_blank" rel="noopener" title="카카오톡 문의">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 3.5c-5 0-9 3.1-9 7 0 2.5 1.7 4.7 4.2 5.9l-.9 3.4c-.1.3.3.6.6.4l4-2.7c.4 0 .7.1 1.1.1 5 0 9-3.1 9-7s-4-7.1-9-7.1z" fill="currentColor"/></svg>
+            <span class="util-menu__text">카카오톡 문의</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" target="_blank" rel="noopener" title="인스타그램">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+            <span class="util-menu__text">인스타그램</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 헤더 -->
+  <header class="header" id="header">
+    <div class="inner header__inner">
+      <h1 class="logo">
+        <a href="../index.html">
+          <img src="../img/logo.svg" alt="" class="logo__mark" width="50" height="50">
+          <span class="logo__text">북<span>톡</span></span>
+        </a>
+      </h1>
+
+      <nav class="gnb" id="gnb" aria-label="주 메뉴">
+        <ul>
+          <li><a href="books.html">도서</a></li>
+          <li><a href="category.html">분야별</a></li>
+          <li><a href="club.html" aria-current="page">독서모임</a></li>
+          <li><a href="community.html">커뮤니티</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__util">
+        <form class="search" id="searchForm" role="search">
+          <label for="searchInput" class="blind">도서 검색</label>
+          <input type="search" id="searchInput" placeholder="책 제목, 저자 검색">
+          <button type="submit" aria-label="검색">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </form>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="메뉴 열기" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 페이지 제목 -->
+    <section class="page-head">
+      <div class="inner">
+        <nav class="breadcrumb" aria-label="현재 위치">
+          <ol>
+            <li><a href="../index.html">홈</a></li>
+            <li aria-current="page">독서모임</li>
+          </ol>
+        </nav>
+        <div class="page-head__row">
+          <div>
+            <h2 class="page-head__title">독서모임</h2>
+            <p class="page-head__desc">같은 책을 읽은 사람들과 한 달에 두 번, 이야기를 나눠요.</p>
+          </div>
+          <dl class="page-stats" id="pageStats"></dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- 참여 방법 -->
+    <section class="section club-how">
+      <div class="inner">
+        <div class="section__head">
+          <div>
+            <h2 class="section__title">이렇게 참여해요</h2>
+            <p class="section__sub">처음이어도 괜찮아요. 책을 다 읽지 못해도 참여할 수 있어요.</p>
+          </div>
+        </div>
+        <ol class="club-steps">
+          <li><strong>01</strong><span>모임 고르기</span><p>분야·지역·요일에 맞는 모임을 찾아요.</p></li>
+          <li><strong>02</strong><span>참여 신청</span><p>정원 안에서 선착순으로 확정돼요.</p></li>
+          <li><strong>03</strong><span>함께 읽기</span><p>2주 동안 정해진 분량을 읽어요.</p></li>
+          <li><strong>04</strong><span>이야기 나누기</span><p>온·오프라인에서 생각을 나눠요.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 모임 목록 -->
+    <section class="section club-list" id="clubs">
+      <div class="inner">
+        <div class="section__head">
+          <div>
+            <h2 class="section__title">모집 중인 모임</h2>
+            <p class="section__sub" id="clubResult" aria-live="polite"></p>
+          </div>
+          <div class="sort">
+            <label for="clubSort" class="blind">정렬</label>
+            <select id="clubSort">
+              <option value="start">시작일 빠른순</option>
+              <option value="seats">남은 자리 많은순</option>
+            </select>
+          </div>
+        </div>
+        <div class="tabs" role="tablist" id="clubTabs" aria-label="모임 종류"></div>
+        <ul class="club-grid" id="clubGrid"></ul>
+      </div>
+    </section>
+
+    <!-- 자주 묻는 질문 + 모임 열기 -->
+    <section class="section club-extra">
+      <div class="inner club-extra__grid">
+        <div>
+          <h2 class="section__title">자주 묻는 질문</h2>
+          <div class="faq">
+            <details>
+              <summary>책을 다 읽지 못했는데 참여해도 되나요?</summary>
+              <p>물론이에요. 읽은 만큼만 이야기해도 충분해요. 모임 전날 그 회차의 읽을 분량과 질문을 미리 보내드려요.</p>
+            </details>
+            <details>
+              <summary>참여비가 있나요?</summary>
+              <p>온라인 모임은 무료예요. 오프라인 모임은 장소에 따라 음료 한 잔 값 정도의 비용이 있을 수 있어요.</p>
+            </details>
+            <details>
+              <summary>신청을 취소하고 싶어요.</summary>
+              <p>모임 카드의 '신청 완료 · 취소하기' 버튼을 누르면 바로 취소돼요. 다른 분을 위해 시작 하루 전까지 취소해 주세요.</p>
+            </details>
+            <details>
+              <summary>모임 중간에 들어갈 수 있나요?</summary>
+              <p>'진행 중'인 모임도 자리가 남아 있으면 신청할 수 있어요. 지난 회차 요약을 함께 보내드려요.</p>
+            </details>
+          </div>
+        </div>
+        <div class="host-box">
+          <p class="host-box__eyebrow">모임장 모집</p>
+          <h2 class="host-box__title">직접 모임을 열어보고 싶나요?</h2>
+          <p class="host-box__desc">좋아하는 책으로 모임을 열면 북톡이 장소 연결, 모집, 진행 자료까지 도와드려요.</p>
+          <ul class="host-box__list">
+            <li>북톡에 등록된 책으로 진행</li>
+            <li>2주 간격, 4회 이상 진행</li>
+            <li>정원 6~30명</li>
+          </ul>
+          <button type="button" class="btn-all" id="hostBtn">모임 개설 문의하기</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <div class="inner footer__inner">
+      <div class="footer__brand">
+        <p class="logo logo--footer">북<span>톡</span></p>
+        <p>책으로 나누는 이야기, 북톡</p>
+      </div>
+      <ul class="footer__links">
+        <li><a href="about.html">서비스 소개</a></li>
+        <li><a href="terms.html">이용약관</a></li>
+        <li><a href="privacy.html"><strong>개인정보처리방침</strong></a></li>
+        <li><a href="support.html">고객센터</a></li>
+      </ul>
+      <div class="footer__bottom">
+        <address class="footer__info">
+          (주)북톡 · 서울특별시 마포구 책방로 12 · 고객센터 02-000-0000<br>
+          &copy; 2026 BookTalk. All rights reserved.
+        </address>
+        <!-- SNS 링크: 실제 계정 주소가 생기면 href를 바꿔주세요 -->
+        <ul class="footer__sns">
+          <li>
+            <a href="#" target="_blank" rel="noopener" class="sns-btn sns-btn--kakao">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3.5c-5 0-9 3.1-9 7 0 2.5 1.7 4.7 4.2 5.9l-.9 3.4c-.1.3.3.6.6.4l4-2.7c.4 0 .7.1 1.1.1 5 0 9-3.1 9-7s-4-7.1-9-7.1z" fill="currentColor"/></svg>
+              카카오톡 문의
+            </a>
+          </li>
+          <li>
+            <a href="#" target="_blank" rel="noopener" class="sns-btn sns-btn--insta">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+              인스타그램
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 미리보기 모달 -->
+  <div class="modal" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="previewTitle" hidden>
+    <div class="modal__dim" data-close></div>
+    <div class="modal__box">
+      <button type="button" class="modal__close" data-close aria-label="미리보기 닫기">&times;</button>
+      <div class="preview">
+        <div class="preview__side">
+          <div class="preview__cover" id="previewCover"></div>
+          <h3 class="preview__title" id="previewTitle"></h3>
+          <p class="preview__author" id="previewAuthor"></p>
+          <div class="preview__rating" id="previewRating"></div>
+          <a href="book-detail.html" class="btn btn--primary btn--block">도서 상세 보기</a>
+        </div>
+        <div class="preview__reader">
+          <p class="preview__chapter" id="previewChapter"></p>
+          <div class="preview__page" id="previewPage"></div>
+          <div class="preview__nav">
+            <button type="button" class="btn btn--ghost btn--sm" id="pagePrev">&lsaquo; 이전</button>
+            <span id="pageNum"></span>
+            <button type="button" class="btn btn--ghost btn--sm" id="pageNext">다음 &rsaquo;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 알림 토스트 / 맨 위로 -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <button type="button" class="top-btn" id="topBtn" aria-label="맨 위로">&uarr;</button>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/club.js"></script>
+</body>
+</html>

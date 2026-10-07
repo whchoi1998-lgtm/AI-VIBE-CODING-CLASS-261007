@@ -126,8 +126,7 @@ const BOOKS = [
   },
   {
     id: 12, category: 'self', title: '말 잘하는 사람의 듣기', author: '임하은',
-    rating: 4.4, reviews: 967, date: '2026-06-25', color: ['#9a6b4f', '#6e4a34'],
-    desc: '대화의 절반은 듣기다. 상대가 마음을 열게 만드는 경청의 기술 12가지.',
+    rating: 4.4, reviews: 967, date: '2026-06-25', color: ['#9a6b4f', '#6e4a34'],    desc: '대화의 절반은 듣기다. 상대가 마음을 열게 만드는 경청의 기술 12가지.',
     chapter: '1장 · 끼어들고 싶은 순간',
     pages: [
       ['상대가 말하는 동안 우리는 대개 다음에 할 말을 준비한다. 그 순간, 듣기는 멈춘다.', '이 장에서는 "끼어들고 싶은 순간"을 알아차리는 연습부터 시작한다.']
@@ -171,6 +170,15 @@ const BOOKS = [
   }
 ];
 
+/* ---------- 표지 이미지 ----------
+   img/분야폴더/책 제목.svg 를 기본 표지로 사용
+   (다른 파일을 쓰려면 위 BOOKS 에서 cover: '경로' 로 직접 지정) */
+const COVER_FOLDERS = {
+  novel: '소설', essay: '에세이', humanities: '인문',
+  business: '경제경영', science: '과학', self: '자기계발'
+};
+BOOKS.forEach(b => { b.cover ??= `img/${COVER_FOLDERS[b.category]}/${b.title}.svg`; });
+
 const CLUBS = [
   {
     id: 1, name: '자정의 소설 읽기', bookId: 1, type: 'offline',
@@ -186,7 +194,50 @@ const CLUBS = [
     id: 3, name: '질문으로 읽는 인문학', bookId: 3, type: 'offline',
     place: '종로 북카페 온기', schedule: '격주 토요일 14:00', startDate: '2026-10-18',
     leader: '모임장 소크라테스', capacity: 10, joined: 10
+  },
+  {
+    id: 4, name: '퇴근 후 경제 공부', bookId: 4, type: 'online',
+    place: 'Google Meet 온라인', schedule: '매주 수요일 21:30', startDate: '2026-10-22',
+    leader: '모임장 숫자읽는밤', capacity: 15, joined: 6
+  },
+  {
+    id: 5, name: '느리게 읽는 에세이', bookId: 2, type: 'offline',
+    place: '성수 책방 한켠', schedule: '격주 일요일 11:00', startDate: '2026-10-26',
+    leader: '이도현 작가 (특별 참여)', capacity: 8, joined: 5
+  },
+  {
+    id: 6, name: '15분 습관 챌린지', bookId: 6, type: 'online',
+    place: '카카오톡 오픈채팅 + Zoom', schedule: '매일 인증 · 격주 목요일 22:00', startDate: '2026-11-02',
+    leader: '모임장 작심삼일탈출', capacity: 30, joined: 11
   }
+];
+
+/* ---------- 커뮤니티 샘플 게시글 ---------- */
+const POST_TYPES = [
+  { id: 'all', name: '전체' },
+  { id: 'free', name: '자유' },
+  { id: 'recommend', name: '책 추천' },
+  { id: 'question', name: '질문' },
+  { id: 'review', name: '모임 후기' }
+];
+
+const COMMUNITY_POSTS = [
+  { id: 1, type: 'recommend', title: '비 오는 날 읽기 좋은 소설 추천해요', nick: '새벽독서', date: '2026-10-06', views: 214, likes: 18, comments: 7, pinned: false,
+    body: '「달이 머무는 서점」 읽고 나서 비슷한 분위기의 책을 찾다가 「겨울 정원의 편지」를 만났어요. 조용하고 따뜻한 이야기 좋아하시는 분들께 강력 추천합니다.' },
+  { id: 2, type: 'review', title: '[모임 후기] 과학이 궁금한 사람들 1회차', nick: '별헤는밤', date: '2026-10-05', views: 156, likes: 24, comments: 5, pinned: false,
+    body: '첫 모임이었는데 2시간이 순식간에 지나갔어요. 8분 20초 전의 태양 이야기로 시작해서 각자 가장 놀라웠던 문장을 나눴습니다. 다음 모임도 기대돼요!' },
+  { id: 3, type: 'question', title: '독서모임 처음인데 준비할 게 있을까요?', nick: '책린이', date: '2026-10-04', views: 98, likes: 6, comments: 11, pinned: false,
+    body: '다음 주에 처음으로 오프라인 모임에 나가요. 책을 다 못 읽어도 괜찮을까요? 다들 메모는 어떻게 하시는지 궁금합니다.' },
+  { id: 4, type: 'free', title: '올해 목표 30권, 드디어 달성했습니다', nick: '느린산책', date: '2026-10-03', views: 302, likes: 41, comments: 14, pinned: false,
+    body: '작년에 12권 읽고 올해는 30권을 목표로 했는데 10월에 달성했어요. 북톡 미리보기로 첫 장 읽고 고른 책들이 실패가 적었던 게 큰 도움이 됐습니다.' },
+  { id: 5, type: 'recommend', title: '경제 입문서로 「작은 가게의 큰 숫자」 어떤가요?', nick: '숫자읽는밤', date: '2026-10-01', views: 87, likes: 9, comments: 4, pinned: false,
+    body: '경제 공부를 처음 시작하는 분들께 부담 없이 추천할 만한 책이에요. 예시가 동네 빵집이라 이해가 쉽습니다.' },
+  { id: 6, type: 'free', title: '책 읽을 때 듣는 음악 공유해요', nick: '커피한잔', date: '2026-09-29', views: 175, likes: 13, comments: 9, pinned: false,
+    body: '저는 가사 없는 피아노 곡을 틀어둬요. 소설 읽을 땐 빗소리 ASMR도 좋더라고요. 여러분은 어떤 음악 들으세요?' },
+  { id: 7, type: 'question', title: 'ISBN 없는 독립출판물도 등록 신청 가능한가요?', nick: '작은책방', date: '2026-09-27', views: 64, likes: 3, comments: 2, pinned: false,
+    body: '좋아하는 독립출판 에세이가 있는데 북톡에 없어서요. ISBN이 없는 책도 신청할 수 있는지 궁금합니다.' },
+  { id: 0, type: 'free', title: '[공지] 북톡 커뮤니티 이용 안내', nick: '북톡 운영팀', date: '2026-09-01', views: 1520, likes: 52, comments: 0, pinned: true,
+    body: '서로의 독서 취향을 존중해 주세요. 책 내용의 결말을 담은 글은 제목에 [스포]를 붙여 주세요. 광고·홍보성 글은 안내 없이 삭제될 수 있습니다.' }
 ];
 
 /* ---------- 도서 상세 페이지용 샘플 (감상평 · 토론) ---------- */

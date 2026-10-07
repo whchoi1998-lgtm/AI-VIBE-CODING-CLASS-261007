@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9ecd8"/><stop offset="1" stop-color="#cfd6b0"/></linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#bg)"/>
+  <!-- 해 -->
+  <circle cx="230" cy="180" r="26" fill="#f2a93b" opacity=".85"/>
+  <!-- 언덕 -->
+  <path d="M0 270c70-30 150-30 300 0V450H0z" fill="#9aab72"/>
+  <path d="M0 320c90-30 190-20 300 10V450H0z" fill="#7c8f52"/>
+  <!-- 구불구불한 길 -->
+  <g transform="translate(70 0)">
+    <path d="M150 268c-30 20 40 40 0 70s-80 40-40 112" fill="none" stroke="#f4efe2" stroke-width="22" stroke-linecap="round"/>
+    <!-- 작은 사람 -->
+    <circle cx="150" cy="262" r="5" fill="#3a332e"/>
+    <rect x="146.5" y="267" width="7" height="13" rx="3" fill="#c2553a"/>
+  </g>
+  <!-- 꽃 -->
+  <g fill="#fff"><circle cx="60" cy="360" r="4"/><circle cx="80" cy="390" r="3"/><circle cx="240" cy="370" r="4"/><circle cx="260" cy="400" r="3"/><circle cx="220" cy="410" r="3"/></g>
+  <g fill="#f2a93b"><circle cx="60" cy="360" r="1.5"/><circle cx="240" cy="370" r="1.5"/></g>
+  <text x="28" y="72" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="30" font-weight="700" fill="#3d4a26">조금 느리게</text>
+  <text x="28" y="112" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="30" font-weight="700" fill="#3d4a26">걷는 법</text>
+  <rect x="28" y="128" width="34" height="3" fill="#f2a93b"/>
+  <text x="28" y="425" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="15" fill="#fff">이도현 에세이</text>
+</svg>

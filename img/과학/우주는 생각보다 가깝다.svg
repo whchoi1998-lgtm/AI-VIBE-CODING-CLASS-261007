@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#22305a"/><stop offset="1" stop-color="#080c1a"/></linearGradient>
+    <linearGradient id="pl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2a93b"/><stop offset="1" stop-color="#c2553a"/></linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#bg)"/>
+  <!-- 별 -->
+  <g fill="#fff"><circle cx="30" cy="160" r="1.4"/><circle cx="80" cy="200" r="1"/><circle cx="260" cy="170" r="1.6"/><circle cx="240" cy="380" r="1.2"/><circle cx="50" cy="350" r="1.5"/><circle cx="120" cy="400" r="1"/><circle cx="200" cy="150" r="1"/><circle cx="280" cy="300" r="1"/></g>
+  <!-- 행성과 고리 -->
+  <ellipse cx="150" cy="285" rx="105" ry="24" fill="none" stroke="#f4e6d4" stroke-width="5" opacity=".5" transform="rotate(-15 150 285)"/>
+  <circle cx="150" cy="285" r="62" fill="url(#pl)"/>
+  <path d="M96 270c30 10 80 12 110-4" stroke="#fff" stroke-width="4" opacity=".25" fill="none"/>
+  <path d="M100 300c34 8 74 8 102-6" stroke="#7a2e1b" stroke-width="5" opacity=".3" fill="none"/>
+  <path d="M46 300a105 24 -15 0 0 205 -46" fill="none" stroke="#f4e6d4" stroke-width="5" opacity=".9"/>
+  <!-- 작은 달 -->
+  <circle cx="245" cy="215" r="10" fill="#cfd8ee"/>
+  <text x="28" y="72" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="30" font-weight="700" fill="#fff">우주는</text>
+  <text x="28" y="112" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="30" font-weight="700" fill="#fff">생각보다 가깝다</text>
+  <rect x="28" y="128" width="34" height="3" fill="#f2a93b"/>
+  <text x="28" y="425" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="15" fill="#fff" opacity=".9">정하늘 지음</text>
+</svg>

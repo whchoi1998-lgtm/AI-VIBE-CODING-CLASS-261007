@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#d1603f"/><stop offset="1" stop-color="#963a22"/></linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#bg)"/>
+  <!-- 식탁 -->
+  <rect x="0" y="330" width="300" height="120" fill="#7a2e1b"/>
+  <!-- 김 -->
+  <g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7">
+    <path d="M125 230c-10-14 10-24 0-40"/><path d="M150 222c-10-14 10-24 0-40"/><path d="M175 230c-10-14 10-24 0-40"/>
+  </g>
+  <!-- 그릇 -->
+  <ellipse cx="150" cy="262" rx="78" ry="14" fill="#f3e3d0"/>
+  <path d="M72 262a78 70 0 0 0 156 0z" fill="#f7efe6"/>
+  <path d="M84 290h132" stroke="#c2553a" stroke-width="5" opacity=".5"/>
+  <ellipse cx="150" cy="262" rx="70" ry="10" fill="#e3a64c"/>
+  <!-- 접시 받침 -->
+  <ellipse cx="150" cy="338" rx="100" ry="10" fill="#5e2314"/>
+  <!-- 젓가락 -->
+  <g stroke="#f3e3d0" stroke-width="6" stroke-linecap="round"><path d="M230 200l40 140"/><path d="M245 196l34 144"/></g>
+  <text x="28" y="72" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="32" font-weight="700" fill="#fff">혼자 먹는</text>
+  <text x="28" y="114" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="32" font-weight="700" fill="#fff">저녁</text>
+  <rect x="28" y="130" width="34" height="3" fill="#f3e3d0"/>
+  <text x="28" y="425" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="15" fill="#fff" opacity=".9">오세린 에세이</text>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#5a70a3"/><stop offset="1" stop-color="#2e3d63"/></linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#bg)"/>
+  <!-- 연결선 -->
+  <g stroke="#cfd8ee" stroke-width="3" opacity=".6"><path d="M150 200L90 280M150 200l60 80M90 280h120M90 280l60 70M210 280l-60 70M150 200v150"/></g>
+  <!-- 사람(원) 4개 -->
+  <g>
+    <circle cx="150" cy="200" r="30" fill="#f2a93b"/>
+    <circle cx="90" cy="280" r="30" fill="#c2553a"/>
+    <circle cx="210" cy="280" r="30" fill="#8a9a6b"/>
+    <circle cx="150" cy="350" r="30" fill="#f4efe6"/>
+  </g>
+  <g fill="#2e3d63" opacity=".8">
+    <circle cx="150" cy="193" r="8"/><path d="M136 214a14 10 0 0 1 28 0z"/>
+    <circle cx="90" cy="273" r="8"/><path d="M76 294a14 10 0 0 1 28 0z"/>
+    <circle cx="210" cy="273" r="8"/><path d="M196 294a14 10 0 0 1 28 0z"/>
+    <circle cx="150" cy="343" r="8"/><path d="M136 364a14 10 0 0 1 28 0z"/>
+  </g>
+  <text x="28" y="72" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="32" font-weight="700" fill="#fff">팀이 일하는</text>
+  <text x="28" y="114" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="32" font-weight="700" fill="#fff">방식</text>
+  <rect x="28" y="130" width="34" height="3" fill="#f2a93b"/>
+  <text x="28" y="425" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="15" fill="#fff" opacity=".9">서지훈 지음</text>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#3f4566"/><stop offset="1" stop-color="#1a1d30"/></linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#bg)"/>
+  <!-- 회로선 -->
+  <g stroke="#6f7bb5" stroke-width="2" fill="none" opacity=".5">
+    <path d="M0 200h60v40h30M300 220h-50v60h-30M40 400v-50h60M260 400v-40h-50M150 150v50"/>
+  </g>
+  <g fill="#6f7bb5" opacity=".7"><circle cx="90" cy="240" r="4"/><circle cx="220" cy="280" r="4"/><circle cx="100" cy="350" r="4"/><circle cx="210" cy="360" r="4"/><circle cx="150" cy="150" r="4"/></g>
+  <!-- 칩 -->
+  <g stroke="#c9cff0" stroke-width="4" stroke-linecap="round">
+    <path d="M125 220v-16M150 220v-16M175 220v-16M125 340v16M150 340v16M175 340v16M90 255h-16M90 280h-16M90 305h-16M210 255h16M210 280h16M210 305h16"/>
+  </g>
+  <rect x="90" y="220" width="120" height="120" rx="14" fill="#2a2f4a" stroke="#c9cff0" stroke-width="4"/>
+  <text x="150" y="296" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="44" font-weight="700" fill="#f2a93b">AI</text>
+  <!-- 말풍선 (사람) -->
+  <path d="M196 170h70a10 10 0 0 1 10 10v28a10 10 0 0 1-10 10h-46l-14 12v-12h-10a10 10 0 0 1-10-10v-28a10 10 0 0 1 10-10z" fill="#c2553a"/>
+  <g fill="#fff"><circle cx="216" cy="194" r="3.5"/><circle cx="231" cy="194" r="3.5"/><circle cx="246" cy="194" r="3.5"/></g>
+  <text x="28" y="72" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="30" font-weight="700" fill="#fff">AI와 함께</text>
+  <text x="28" y="112" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="30" font-weight="700" fill="#fff">일하는 법</text>
+  <rect x="28" y="128" width="34" height="3" fill="#f2a93b"/>
+  <text x="28" y="425" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="15" fill="#fff" opacity=".9">노현우 지음</text>
+</svg>

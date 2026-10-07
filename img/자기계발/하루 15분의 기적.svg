@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#f0a24a"/><stop offset="1" stop-color="#b8691f"/></linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#bg)"/>
+  <!-- 시계 -->
+  <circle cx="150" cy="280" r="96" fill="#fff7ec"/>
+  <!-- 15분 구간 -->
+  <path d="M150 280V184a96 96 0 0 1 96 96z" fill="#c2553a"/>
+  <circle cx="150" cy="280" r="96" fill="none" stroke="#2b2622" stroke-width="8"/>
+  <g stroke="#2b2622" stroke-width="4" stroke-linecap="round">
+    <path d="M150 194v12M236 280h-12M150 366v-12M64 280h12"/>
+  </g>
+  <g stroke="#2b2622" stroke-width="6" stroke-linecap="round"><path d="M150 280v-60"/><path d="M150 280h46"/></g>
+  <circle cx="150" cy="280" r="7" fill="#2b2622"/>
+  <text x="206" y="246" text-anchor="middle" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#fff">15</text>
+  <text x="28" y="72" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="32" font-weight="700" fill="#fff">하루 15분의</text>
+  <text x="28" y="114" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="32" font-weight="700" fill="#fff">기적</text>
+  <rect x="28" y="130" width="34" height="3" fill="#2b2622"/>
+  <text x="28" y="425" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="15" fill="#fff">윤서진 지음</text>
+</svg>

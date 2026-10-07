@@ -59,8 +59,14 @@ function starsHTML(rating, reviews) {
     </span>`;
 }
 
-// 책 표지 (이미지가 준비되기 전까지 CSS 표지로 대체)
+// 책 표지: book.cover(이미지 경로)가 있으면 이미지, 없으면 CSS로 그린 표지
 function coverHTML(book, extraClass = '') {
+  if (book.cover) {
+    return `
+      <div class="cover cover--img ${extraClass}" aria-hidden="true">
+        <img src="${ROOT}${encodeURI(book.cover)}" alt="" loading="lazy">
+      </div>`;
+  }
   const [c1, c2] = book.color;
   return `
     <div class="cover ${extraClass}" style="background:linear-gradient(160deg, ${c1}, ${c2})" aria-hidden="true">
@@ -86,6 +92,65 @@ function bookCardHTML(b, i = 0) {
         ${starsHTML(b.rating, b.reviews)}
       </div>
     </li>`;
+}
+
+/* ---------- 독서모임 카드 (메인 · 독서모임 페이지 공용) ---------- */
+const CLUB_KEY = 'booktalk-joined-clubs';
+const joinedClubs = new Set((() => {
+  try { return JSON.parse(localStorage.getItem(CLUB_KEY)) || []; } catch { return []; }
+})());
+
+function dday(dateStr) {
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const diff = Math.round((new Date(dateStr + 'T00:00:00') - today) / 86400000);
+  if (diff > 0) return `D-${diff}`;
+  if (diff === 0) return 'D-DAY';
+  return '진행 중';
+}
+
+// 모집 상태: 'joined' 신청함 / 'full' 마감 / 'open' 모집 중
+function clubState(club) {
+  const isJoined = joinedClubs.has(club.id);
+  const count = club.joined + (isJoined ? 1 : 0);
+  return { isJoined, count, isFull: count >= club.capacity && !isJoined };
+}
+
+function clubCardHTML(club) {
+  const book = findBook(club.bookId);
+  const { isJoined, count, isFull } = clubState(club);
+  const percent = Math.min(100, (count / club.capacity) * 100);
+  const btnText = isJoined ? '신청 완료 · 취소하기' : isFull ? '모집 마감' : '참여 신청';
+
+  return `
+    <li class="club-card">
+      <div class="club-card__top">
+        <span class="club-card__type ${club.type === 'online' ? 'club-card__type--online' : ''}">
+          ${club.type === 'online' ? '온라인' : '오프라인'}
+        </span>
+        <span class="club-card__dday">${dday(club.startDate)}</span>
+      </div>
+      <h3 class="club-card__name">${escapeHTML(club.name)}</h3>
+      <p class="club-card__book">함께 읽는 책 · <a href="${pagePath('book-detail.html')}?id=${book.id}">『${escapeHTML(book.title)}』</a></p>
+      <dl class="club-card__info">
+        <div><dt>일정</dt><dd>${club.schedule}</dd></div>
+        <div><dt>시작</dt><dd>${club.startDate.replace(/-/g, '.')}</dd></div>
+        <div><dt>장소</dt><dd>${escapeHTML(club.place)}</dd></div>
+        <div><dt>진행</dt><dd>${escapeHTML(club.leader)}</dd></div>
+      </dl>
+      <p class="club-card__seat"><span>모집 현황</span><span><strong>${count}</strong> / ${club.capacity}명</span></p>
+      <div class="club-card__bar"><span style="width:${percent}%"></span></div>
+      <button type="button" class="btn btn--primary btn--block ${isJoined ? 'is-joined' : ''}"
+        data-club="${club.id}" ${isFull ? 'disabled' : ''}>${btnText}</button>
+    </li>`;
+}
+
+// 참여 신청/취소 토글 (이 브라우저에 저장) → 안내 문구 반환
+function toggleClubJoin(id) {
+  const club = CLUBS.find(c => c.id === id);
+  const joining = !joinedClubs.has(id);
+  if (joining) joinedClubs.add(id); else joinedClubs.delete(id);
+  try { localStorage.setItem(CLUB_KEY, JSON.stringify([...joinedClubs])); } catch { /* 무시 */ }
+  return joining ? `'${club.name}' 참여 신청이 완료됐어요!` : `'${club.name}' 신청을 취소했어요.`;
 }
 
 // 토스트 알림

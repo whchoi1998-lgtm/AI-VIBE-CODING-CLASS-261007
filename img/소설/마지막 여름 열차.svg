@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e2b94f"/><stop offset=".7" stop-color="#c9932a"/><stop offset="1" stop-color="#8c6418"/></linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#bg)"/>
+  <!-- 해 -->
+  <circle cx="220" cy="210" r="48" fill="#fff3c8" opacity=".9"/>
+  <!-- 들판 -->
+  <path d="M0 300c60-20 120-10 180-18s90-4 120 0V450H0z" fill="#7c8a3a"/>
+  <path d="M0 330c80-14 160-6 300-16V450H0z" fill="#5f6c28"/>
+  <!-- 철길 -->
+  <rect x="0" y="352" width="300" height="5" fill="#3a2a14"/>
+  <g fill="#3a2a14"><rect x="10" y="357" width="6" height="10"/><rect x="50" y="357" width="6" height="10"/><rect x="90" y="357" width="6" height="10"/><rect x="130" y="357" width="6" height="10"/><rect x="170" y="357" width="6" height="10"/><rect x="210" y="357" width="6" height="10"/><rect x="250" y="357" width="6" height="10"/><rect x="290" y="357" width="6" height="10"/></g>
+  <!-- 열차 -->
+  <rect x="30" y="300" width="150" height="48" rx="8" fill="#2f4a3a"/>
+  <rect x="186" y="300" width="100" height="48" rx="8" fill="#2f4a3a"/>
+  <rect x="30" y="300" width="150" height="10" rx="5" fill="#c2553a"/>
+  <rect x="186" y="300" width="100" height="10" rx="5" fill="#c2553a"/>
+  <g fill="#fff3c8"><rect x="42" y="318" width="22" height="16" rx="2"/><rect x="72" y="318" width="22" height="16" rx="2"/><rect x="102" y="318" width="22" height="16" rx="2"/><rect x="132" y="318" width="22" height="16" rx="2"/><rect x="198" y="318" width="22" height="16" rx="2"/><rect x="228" y="318" width="22" height="16" rx="2"/></g>
+  <g fill="#1c1c1c"><circle cx="55" cy="350" r="6"/><circle cx="155" cy="350" r="6"/><circle cx="205" cy="350" r="6"/><circle cx="265" cy="350" r="6"/></g>
+  <text x="28" y="72" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="32" font-weight="700" fill="#fff">마지막</text>
+  <text x="28" y="114" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="32" font-weight="700" fill="#fff">여름 열차</text>
+  <rect x="28" y="130" width="34" height="3" fill="#2f4a3a"/>
+  <text x="28" y="425" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="15" fill="#fff" opacity=".9">장우진 장편소설</text>
+</svg>

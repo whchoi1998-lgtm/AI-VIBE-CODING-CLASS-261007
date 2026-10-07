@@ -101,43 +101,6 @@
 .best-item__title { font-weight: 700; line-height: 1.4; }
 .best-item__author { font-size: 13px; color: var(--color-sub); }
 
-/* ---------- 독서모임 ---------- */
-.club-steps {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px;
-}
-.club-steps li {
-  padding: 20px 22px; border-radius: var(--radius); background: #eef1ec; color: var(--color-point);
-}
-.club-steps strong { font-family: var(--font-serif); font-size: 14px; opacity: .6; }
-.club-steps span { display: block; margin: 4px 0; font-size: 18px; font-weight: 700; }
-.club-steps p { font-size: 14px; color: #52665a; }
-
-.club-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.club-card {
-  display: flex; flex-direction: column; padding: 26px; border-radius: var(--radius);
-  background: var(--color-surface); border: 1px solid var(--color-line);
-}
-.club-card__top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-.club-card__type {
-  padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 500;
-  background: #eef1ec; color: var(--color-point);
-}
-.club-card__type--online { background: #fbeee9; color: var(--color-primary-dark); }
-.club-card__dday { font-size: 13px; font-weight: 700; color: var(--color-primary); }
-.club-card__name { margin-top: 16px; font-family: var(--font-serif); font-size: 21px; line-height: 1.35; }
-.club-card__book { margin-top: 6px; font-size: 14px; color: var(--color-sub); }
-.club-card__info { margin: 18px 0; padding: 16px 0; border-top: 1px dashed var(--color-line); border-bottom: 1px dashed var(--color-line); font-size: 14px; }
-.club-card__info div { display: flex; gap: 12px; }
-.club-card__info div + div { margin-top: 6px; }
-.club-card__info dt { flex-shrink: 0; width: 44px; color: var(--color-sub); }
-.club-card__info dd { margin: 0; }
-.club-card__seat { display: flex; justify-content: space-between; font-size: 13px; color: var(--color-sub); }
-.club-card__seat strong { color: var(--color-text); }
-.club-card__bar { height: 6px; margin: 8px 0 20px; border-radius: 999px; background: var(--color-line); overflow: hidden; }
-.club-card__bar span { display: block; height: 100%; background: var(--color-point); border-radius: inherit; transition: width .4s; }
-.club-card .btn { margin-top: auto; }
-.club-card .btn.is-joined { background: var(--color-point); }
-
 /* ---------- 뉴스레터 ---------- */
 .newsletter { background: var(--color-point); color: #fff; padding: 56px 0; }
 .newsletter__inner { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
@@ -152,8 +115,6 @@
 /* ---------- 반응형 ---------- */
 @media (max-width: 1024px) {
   .best-slider { --best-cols: 3; }
-  .club-grid { grid-template-columns: repeat(2, 1fr); }
-  .club-steps { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 860px) {
@@ -174,8 +135,5 @@
   .best-slider__btn { width: 36px; height: 36px; font-size: 20px; }
   .best-slider__btn--prev { left: -8px; }
   .best-slider__btn--next { right: -8px; }
-  .club-grid { grid-template-columns: 1fr; }
-  .club-steps { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .club-steps li { padding: 16px; }
   .newsletter__form { flex-basis: 100%; }
 }

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#4fa08e"/><stop offset="1" stop-color="#1f5446"/></linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#bg)"/>
+  <!-- 현미경 시야 -->
+  <circle cx="150" cy="285" r="110" fill="#e6f4ef"/>
+  <circle cx="150" cy="285" r="110" fill="none" stroke="#163d33" stroke-width="10"/>
+  <!-- 미생물 -->
+  <g>
+    <ellipse cx="115" cy="250" rx="34" ry="20" fill="#f2a93b" transform="rotate(-20 115 250)"/>
+    <g fill="#c27a1e"><circle cx="105" cy="248" r="4"/><circle cx="122" cy="244" r="3"/><circle cx="118" cy="258" r="3"/></g>
+    <circle cx="190" cy="240" r="22" fill="#e88aa4"/>
+    <circle cx="190" cy="240" r="8" fill="#b4566f"/>
+    <path d="M160 320c10-18 40-18 50 0s40 18 50 0" fill="none" stroke="#4fa08e" stroke-width="12" stroke-linecap="round" transform="translate(-40 0)"/>
+    <g fill="#8a9a6b"><circle cx="90" cy="320" r="9"/><circle cx="104" cy="334" r="7"/><circle cx="86" cy="340" r="6"/></g>
+    <ellipse cx="200" cy="330" rx="20" ry="12" fill="#5a70a3" transform="rotate(30 200 330)"/>
+    <g stroke="#5a70a3" stroke-width="2"><path d="M214 344l8 8M188 318l-8-8"/></g>
+  </g>
+  <text x="28" y="72" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="30" font-weight="700" fill="#fff">미생물과 함께</text>
+  <text x="28" y="112" font-family="'Noto Serif KR','Batang','Nanum Myeongjo',serif" font-size="30" font-weight="700" fill="#fff">사는 법</text>
+  <rect x="28" y="128" width="34" height="3" fill="#f2a93b"/>
+  <text x="28" y="430" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="15" fill="#fff" opacity=".9">문가은 지음</text>
+</svg>

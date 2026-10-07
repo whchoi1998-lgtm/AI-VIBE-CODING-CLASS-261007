@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="북톡 커뮤니티 - 책 추천, 모임 후기, 질문을 자유롭게 나누는 게시판">
+  <title>커뮤니티 | 북톡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/community.css">
+</head>
+<body>
+
+  <!-- 최상단 바: 카카오톡·인스타그램은 실제 주소가 생기면 href를 바꿔주세요 -->
+  <div class="topbar">
+    <div class="inner topbar__inner">
+      <ul class="util-menu">
+        <li><a href="mypage.html">마이페이지</a></li>
+        <li><a href="login.html">로그인</a></li>
+        <li>
+          <a href="#" target="_blank" rel="noopener" title="카카오톡 문의">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 3.5c-5 0-9 3.1-9 7 0 2.5 1.7 4.7 4.2 5.9l-.9 3.4c-.1.3.3.6.6.4l4-2.7c.4 0 .7.1 1.1.1 5 0 9-3.1 9-7s-4-7.1-9-7.1z" fill="currentColor"/></svg>
+            <span class="util-menu__text">카카오톡 문의</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" target="_blank" rel="noopener" title="인스타그램">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+            <span class="util-menu__text">인스타그램</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 헤더 -->
+  <header class="header" id="header">
+    <div class="inner header__inner">
+      <h1 class="logo">
+        <a href="../index.html">
+          <img src="../img/logo.svg" alt="" class="logo__mark" width="50" height="50">
+          <span class="logo__text">북<span>톡</span></span>
+        </a>
+      </h1>
+
+      <nav class="gnb" id="gnb" aria-label="주 메뉴">
+        <ul>
+          <li><a href="books.html">도서</a></li>
+          <li><a href="category.html">분야별</a></li>
+          <li><a href="club.html">독서모임</a></li>
+          <li><a href="community.html" aria-current="page">커뮤니티</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__util">
+        <form class="search" id="searchForm" role="search">
+          <label for="searchInput" class="blind">도서 검색</label>
+          <input type="search" id="searchInput" placeholder="책 제목, 저자 검색">
+          <button type="submit" aria-label="검색">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </form>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="메뉴 열기" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 페이지 제목 -->
+    <section class="page-head">
+      <div class="inner">
+        <nav class="breadcrumb" aria-label="현재 위치">
+          <ol>
+            <li><a href="../index.html">홈</a></li>
+            <li aria-current="page">커뮤니티</li>
+          </ol>
+        </nav>
+        <div class="page-head__row">
+          <div>
+            <h2 class="page-head__title">커뮤니티</h2>
+            <p class="page-head__desc">책 추천, 모임 후기, 궁금한 점까지. 북톡 독자들과 자유롭게 이야기해요.</p>
+          </div>
+          <dl class="page-stats" id="pageStats"></dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section board">
+      <div class="inner board__grid">
+        <!-- 왼쪽: 내 프로필 + 게시판 메뉴 -->
+        <aside class="board__nav" aria-label="커뮤니티 메뉴">
+          <div class="nav-box profile">
+            <div class="profile__top">
+              <span class="profile__avatar" id="myAvatar" aria-hidden="true"></span>
+              <div class="profile__name">
+                <button type="button" class="profile__nick" id="myNick" title="눌러서 닉네임 바꾸기"></button>
+                <span class="profile__level" id="myLevel"></span>
+              </div>
+            </div>
+            <dl class="profile__stats" id="myStats"></dl>
+            <button type="button" class="profile__write" data-write>
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              글쓰기
+            </button>
+          </div>
+
+          <nav class="nav-box side-menu">
+            <p class="side-menu__label">게시판</p>
+            <ul id="boardMenu"></ul>
+            <p class="side-menu__label">내 활동</p>
+            <ul id="myMenu"></ul>
+          </nav>
+        </aside>
+
+        <!-- 게시판 -->
+        <div class="board__main">
+          <div class="board__top">
+            <h2 class="board__heading" id="boardHeading">홈 피드</h2>
+            <button type="button" class="btn-dark-sm" id="writeToggle" aria-expanded="false" aria-controls="writeForm">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M4 20h4l10-10-4-4L4 16v4zM14 6l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              글쓰기
+            </button>
+          </div>
+
+          <!-- 글쓰기 양식 -->
+          <form class="write-panel" id="writeForm" novalidate hidden>
+            <h3 class="write-panel__title">새 글 쓰기</h3>
+            <div class="field-row">
+              <div class="field">
+                <label for="postType">분류</label>
+                <select id="postType" name="type"></select>
+                <p class="field__error"></p>
+              </div>
+              <div class="field">
+                <label for="postNick">닉네임</label>
+                <input type="text" id="postNick" name="nick" maxlength="12" placeholder="비워두면 내 닉네임">
+                <p class="field__error"></p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="postTitle">제목 <span class="req">*</span></label>
+              <input type="text" id="postTitle" name="title" maxlength="50" placeholder="제목을 입력해 주세요">
+              <p class="field__error"></p>
+            </div>
+            <div class="field">
+              <label for="postBody">내용 <span class="req">*</span></label>
+              <textarea id="postBody" name="body" rows="5" maxlength="1000" placeholder="결말이 담긴 내용은 제목에 [스포]를 붙여 주세요."></textarea>
+              <p class="field__error"></p>
+            </div>
+            <div class="write-panel__btns">
+              <button type="button" class="btn btn--ghost" id="writeCancel">취소</button>
+              <button type="submit" class="btn btn--primary">등록하기</button>
+            </div>
+          </form>
+
+          <div class="board__tools">
+            <p class="books__result" id="postResult" aria-live="polite"></p>
+            <div class="board__tools-right">
+              <div class="board-search">
+                <label for="postSearch" class="blind">게시글 검색</label>
+                <input type="search" id="postSearch" placeholder="제목·내용 검색">
+              </div>
+              <div class="sort">
+                <label for="postSort" class="blind">정렬</label>
+                <select id="postSort">
+                  <option value="newest">최신순</option>
+                  <option value="likes">공감 많은순</option>
+                  <option value="views">조회 많은순</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <ul class="post-list" id="postList"></ul>
+          <button type="button" class="more-btn" id="postMore" hidden>더 보기</button>
+        </div>
+
+        <!-- 사이드 -->
+        <aside class="board__side">
+          <div class="side-box">
+            <h3 class="side-box__title">인기 글</h3>
+            <ol class="hot-list" id="hotList"></ol>
+          </div>
+          <div class="side-box side-box--talk">
+            <h3 class="side-box__title">지금 토론 중인 책</h3>
+            <div id="talkBook"></div>
+          </div>
+          <div class="side-box">
+            <h3 class="side-box__title">이용 안내</h3>
+            <ul class="rule-list">
+              <li>서로의 독서 취향을 존중해 주세요.</li>
+              <li>결말이 담긴 글은 제목에 [스포]를 붙여요.</li>
+              <li>광고·홍보성 글은 삭제될 수 있어요.</li>
+            </ul>
+          </div>
+          <div class="side-box">
+            <h3 class="side-box__title side-box__title--icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.2 13.5 7 22l5-3 5 3-1.2-8.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              이번 주 활동 TOP 5
+            </h3>
+            <ol class="rank-list" id="topUsers"></ol>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <div class="inner footer__inner">
+      <div class="footer__brand">
+        <p class="logo logo--footer">북<span>톡</span></p>
+        <p>책으로 나누는 이야기, 북톡</p>
+      </div>
+      <ul class="footer__links">
+        <li><a href="about.html">서비스 소개</a></li>
+        <li><a href="terms.html">이용약관</a></li>
+        <li><a href="privacy.html"><strong>개인정보처리방침</strong></a></li>
+        <li><a href="support.html">고객센터</a></li>
+      </ul>
+      <div class="footer__bottom">
+        <address class="footer__info">
+          (주)북톡 · 서울특별시 마포구 책방로 12 · 고객센터 02-000-0000<br>
+          &copy; 2026 BookTalk. All rights reserved.
+        </address>
+        <!-- SNS 링크: 실제 계정 주소가 생기면 href를 바꿔주세요 -->
+        <ul class="footer__sns">
+          <li>
+            <a href="#" target="_blank" rel="noopener" class="sns-btn sns-btn--kakao">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3.5c-5 0-9 3.1-9 7 0 2.5 1.7 4.7 4.2 5.9l-.9 3.4c-.1.3.3.6.6.4l4-2.7c.4 0 .7.1 1.1.1 5 0 9-3.1 9-7s-4-7.1-9-7.1z" fill="currentColor"/></svg>
+              카카오톡 문의
+            </a>
+          </li>
+          <li>
+            <a href="#" target="_blank" rel="noopener" class="sns-btn sns-btn--insta">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+              인스타그램
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 미리보기 모달 -->
+  <div class="modal" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="previewTitle" hidden>
+    <div class="modal__dim" data-close></div>
+    <div class="modal__box">
+      <button type="button" class="modal__close" data-close aria-label="미리보기 닫기">&times;</button>
+      <div class="preview">
+        <div class="preview__side">
+          <div class="preview__cover" id="previewCover"></div>
+          <h3 class="preview__title" id="previewTitle"></h3>
+          <p class="preview__author" id="previewAuthor"></p>
+          <div class="preview__rating" id="previewRating"></div>
+          <a href="book-detail.html" class="btn btn--primary btn--block">도서 상세 보기</a>
+        </div>
+        <div class="preview__reader">
+          <p class="preview__chapter" id="previewChapter"></p>
+          <div class="preview__page" id="previewPage"></div>
+          <div class="preview__nav">
+            <button type="button" class="btn btn--ghost btn--sm" id="pagePrev">&lsaquo; 이전</button>
+            <span id="pageNum"></span>
+            <button type="button" class="btn btn--ghost btn--sm" id="pageNext">다음 &rsaquo;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 알림 토스트 / 맨 위로 -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <button type="button" class="top-btn" id="topBtn" aria-label="맨 위로">&uarr;</button>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/community.js"></script>
+</body>
+</html>
