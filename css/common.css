@@ -322,6 +322,37 @@ address { font-style: normal; }
 .field__error:empty { display: none; }
 .field__count { margin-top: 4px; text-align: right; font-size: 12px; color: var(--color-sub); }
 
+/* 신청 · 문의 양식 상자 (책 등록 신청 · 문의하기) */
+.reg-form {
+  padding: 32px; border-radius: 16px; border: 1px solid var(--color-line); background: var(--color-surface);
+  box-shadow: var(--shadow);
+}
+.reg-form__title { font-family: var(--font-serif); font-size: 22px; }
+.reg-form__desc { margin: 4px 0 22px; font-size: 13px; color: var(--color-sub); }
+
+.agree { display: flex; align-items: flex-start; gap: 8px; margin: 6px 0 4px; font-size: 14px; cursor: pointer; }
+.agree input { margin-top: 4px; width: 16px; height: 16px; accent-color: var(--color-primary); }
+.reg-form .btn { margin-top: 18px; height: 52px; font-size: 16px; }
+
+/* 안내 상자 · 체크 목록 (책 등록 신청 · 문의하기) */
+.info-box { padding: 26px; border-radius: var(--radius); background: var(--color-bg); }
+.info-box__head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.info-box__title { font-size: 18px; font-weight: 700; margin-bottom: 14px; }
+.info-box__head .info-box__title { margin-bottom: 14px; }
+.info-box__head .link-more { margin-bottom: 14px; font-size: 14px; }
+
+.check-list li { position: relative; padding-left: 26px; font-size: 15px; }
+.check-list li + li { margin-top: 10px; }
+.check-list li::before {
+  content: ''; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--color-point) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat;
+}
+
+@media (max-width: 640px) {
+  .field-row { grid-template-columns: 1fr; gap: 0; }
+  .reg-form { padding: 24px 20px; }
+}
+
 
 /* ---------- 위치 표시 (홈 › 전체 도서 ...) ---------- */
 .breadcrumb ol { display: flex; gap: 8px; font-size: 13px; color: var(--color-sub); }

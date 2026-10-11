@@ -73,18 +73,7 @@
 .register__body { display: grid; grid-template-columns: 1fr 1.1fr; gap: 32px; align-items: start; }
 .register__info { display: flex; flex-direction: column; gap: 20px; }
 
-.info-box { padding: 26px; border-radius: var(--radius); background: var(--color-bg); }
-.info-box__head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.info-box__title { font-size: 18px; font-weight: 700; margin-bottom: 14px; }
-.info-box__head .info-box__title { margin-bottom: 14px; }
-.info-box__head .link-more { margin-bottom: 14px; font-size: 14px; }
-
-.check-list li { position: relative; padding-left: 26px; font-size: 15px; }
-.check-list li + li { margin-top: 10px; }
-.check-list li::before {
-  content: ''; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%;
-  background: var(--color-point) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat;
-}
+/* 안내 상자 · 체크 목록 · 신청 양식은 common.css 공용 (문의하기 페이지와 함께 사용) */
 
 .new-books li {
   display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: 14px;
@@ -97,18 +86,6 @@
 .new-books li:hover .new-books__title { color: var(--color-primary); }
 .new-books__author { font-size: 13px; color: var(--color-sub); }
 .new-books__date { font-size: 12px; color: var(--color-sub); white-space: nowrap; }
-
-/* 신청 양식 */
-.reg-form {
-  padding: 32px; border-radius: 16px; border: 1px solid var(--color-line); background: var(--color-surface);
-  box-shadow: var(--shadow);
-}
-.reg-form__title { font-family: var(--font-serif); font-size: 22px; }
-.reg-form__desc { margin: 4px 0 22px; font-size: 13px; color: var(--color-sub); }
-
-.agree { display: flex; align-items: flex-start; gap: 8px; margin: 6px 0 4px; font-size: 14px; cursor: pointer; }
-.agree input { margin-top: 4px; width: 16px; height: 16px; accent-color: var(--color-primary); }
-.reg-form .btn { margin-top: 18px; height: 52px; font-size: 16px; }
 
 /* 내 신청 현황 */
 .my-requests { margin-top: 40px; padding: 26px; border-radius: var(--radius); background: var(--color-bg); }
@@ -141,6 +118,4 @@
   .book-row__desc { display: none; }
   .reg-steps { grid-template-columns: 1fr; }
   .reg-steps li::after { display: none; }
-  .field-row { grid-template-columns: 1fr; gap: 0; }
-  .reg-form { padding: 24px 20px; }
 }

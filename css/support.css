@@ -1,0 +1,24 @@
+/* ==========================================================
+   북톡 문의하기 페이지 (html/support.html) 전용 스타일
+   (서브 페이지 제목 · 입력 양식 · 안내 상자는 common.css 공용)
+   ========================================================== */
+
+.support__body { display: grid; grid-template-columns: 1fr 1.1fr; gap: 32px; align-items: start; }
+.support__info { display: flex; flex-direction: column; gap: 20px; }
+.support__info a { color: var(--color-primary); text-decoration: underline; }
+
+/* 운영 시간 */
+.support__hours div { display: flex; gap: 16px; padding: 8px 0; border-top: 1px solid var(--color-line); font-size: 15px; }
+.support__hours div:first-child { border-top: 0; padding-top: 0; }
+.support__hours dt { flex: 0 0 96px; color: var(--color-sub); }
+.support__hours dd { margin: 0; }
+
+/* 전송 결과 안내 */
+.support__status { margin-top: 14px; padding: 12px 14px; border-radius: 8px; font-size: 14px; }
+.support__status.is-success { background: #eef1ec; color: var(--color-point); }
+.support__status.is-error { background: #fdf3f2; color: #d0342c; }
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 1024px) {
+  .support__body { grid-template-columns: 1fr; }
+}

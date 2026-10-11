@@ -1,0 +1,46 @@
+/* ==========================================================
+   북톡 서비스 소개 페이지 (html/about.html) 전용 스타일
+   (서브 페이지 제목 · 버튼은 common.css 공용)
+   ========================================================== */
+
+/* ---------- 북톡이 시작된 이유 ---------- */
+.about-intro { background: var(--color-surface); }
+.about-intro__inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+.about-intro .section__title { line-height: 1.4; }
+.about-intro__text p { font-size: 16px; line-height: 1.8; color: #4d4540; }
+.about-intro__text p + p { margin-top: 14px; }
+.about-intro__text strong { color: var(--color-primary); }
+
+/* ---------- 북톡에서 할 수 있는 일 ---------- */
+.feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.feature-card {
+  display: flex; flex-direction: column; height: 100%; padding: 26px 22px;
+  border: 1px solid var(--color-line); border-radius: var(--radius); background: var(--color-surface);
+  transition: transform .2s, box-shadow .2s;
+}
+.feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.feature-card__num { font-size: 12px; font-weight: 700; color: var(--color-primary); letter-spacing: 1px; }
+.feature-card__title { margin: 6px 0 8px; font-family: var(--font-serif); font-size: 20px; }
+.feature-card p { flex: 1; font-size: 14px; color: var(--color-sub); }
+.feature-card__go { margin-top: 18px; font-size: 14px; font-weight: 500; }
+.feature-card:hover .feature-card__go { color: var(--color-primary); }
+
+/* ---------- 문의 안내 띠 ---------- */
+.about-cta { padding: 48px 0; background: var(--color-point); color: #fff; }
+.about-cta__inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.about-cta__title { font-family: var(--font-serif); font-size: 24px; margin-bottom: 4px; }
+.about-cta p { color: rgba(255,255,255,.8); }
+.about-cta .btn { flex-shrink: 0; }
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 1024px) {
+  .feature-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 860px) {
+  .about-intro__inner { grid-template-columns: 1fr; gap: 20px; }
+}
+
+@media (max-width: 640px) {
+  .feature-grid { grid-template-columns: 1fr; }
+}
