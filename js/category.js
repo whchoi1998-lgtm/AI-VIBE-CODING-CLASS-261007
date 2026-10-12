@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('pageStats').innerHTML = `
     <div><dt>분야</dt><dd>${cats.length}<small>개</small></dd></div>
     <div><dt>전체 도서</dt><dd>${BOOKS.length}<small>권</small></dd></div>
-    <div><dt>별점 1위 분야</dt><dd style="font-size:20px">${top.name}</dd></div>`;
+    <div><dt>별점 1위 분야</dt><dd style="font-size:var(--fs-h4)">${top.name}</dd></div>`;
 
   /* ---------- 분야 카드 ---------- */
   document.getElementById('catCards').innerHTML = cats.map(c => `

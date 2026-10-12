@@ -8,13 +8,13 @@
 .support__info a { color: var(--color-primary); text-decoration: underline; }
 
 /* 운영 시간 */
-.support__hours div { display: flex; gap: 16px; padding: 8px 0; border-top: 1px solid var(--color-line); font-size: 15px; }
+.support__hours div { display: flex; gap: 16px; padding: 8px 0; border-top: 1px solid var(--color-line); font-size: var(--fs-ui); }
 .support__hours div:first-child { border-top: 0; padding-top: 0; }
 .support__hours dt { flex: 0 0 96px; color: var(--color-sub); }
 .support__hours dd { margin: 0; }
 
 /* 전송 결과 안내 */
-.support__status { margin-top: 14px; padding: 12px 14px; border-radius: 8px; font-size: 14px; }
+.support__status { margin-top: 14px; padding: 12px 14px; border-radius: 8px; font-size: var(--fs-small); }
 .support__status.is-success { background: #eef1ec; color: var(--color-point); }
 .support__status.is-error { background: #fdf3f2; color: #d0342c; }
 

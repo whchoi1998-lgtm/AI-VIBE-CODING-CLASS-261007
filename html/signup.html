@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="북톡 회원가입 - 이메일로 가입하고 감상평 · 독서모임 · 커뮤니티를 함께하세요">
+  <title>회원가입 | 북톡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/login.css"> <!-- 로그인 상자 공용 스타일 -->
+  <link rel="stylesheet" href="../css/signup.css">
+</head>
+<body>
+
+  <!-- 최상단 바: 카카오톡·인스타그램은 실제 주소가 생기면 href를 바꿔주세요 -->
+  <div class="topbar">
+    <div class="inner topbar__inner">
+      <ul class="util-menu">
+        <li><a href="login.html">로그인</a></li>
+        <li><a href="about.html">서비스 소개</a></li>
+        <li><a href="support.html">문의하기</a></li>
+        <li>
+          <a href="#" target="_blank" rel="noopener" title="카카오톡 문의">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 3.5c-5 0-9 3.1-9 7 0 2.5 1.7 4.7 4.2 5.9l-.9 3.4c-.1.3.3.6.6.4l4-2.7c.4 0 .7.1 1.1.1 5 0 9-3.1 9-7s-4-7.1-9-7.1z" fill="currentColor"/></svg>
+            <span class="util-menu__text">카카오톡 문의</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" target="_blank" rel="noopener" title="인스타그램">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+            <span class="util-menu__text">인스타그램</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 헤더 -->
+  <header class="header" id="header">
+    <div class="inner header__inner">
+      <h1 class="logo">
+        <a href="../index.html">
+          <img src="../img/logo.svg" alt="" class="logo__mark" width="50" height="50">
+          <span class="logo__text">북<span>톡</span></span>
+        </a>
+      </h1>
+
+      <nav class="gnb" id="gnb" aria-label="주 메뉴">
+        <ul>
+          <li><a href="books.html">도서</a></li>
+          <li><a href="category.html">분야별</a></li>
+          <li><a href="club.html">독서모임</a></li>
+          <li><a href="community.html">커뮤니티</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__util">
+        <form class="search" id="searchForm" role="search">
+          <label for="searchInput" class="blind">도서 검색</label>
+          <input type="search" id="searchInput" placeholder="책 제목, 저자 검색">
+          <button type="submit" aria-label="검색">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </form>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="메뉴 열기" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="login">
+    <div class="inner">
+      <form class="reg-form login__box signup__box" id="signupForm" novalidate>
+        <img src="../img/logo.svg" alt="" class="login__mark" width="56" height="56">
+        <h2 class="login__title">북톡 회원가입</h2>
+        <p class="login__desc">이메일로 가입하고 감상평 · 독서모임 · 커뮤니티를 함께해요.</p>
+
+        <div class="field">
+          <label for="suEmail">이메일 <span class="req">*</span></label>
+          <input type="email" id="suEmail" name="email" autocomplete="email" maxlength="100" placeholder="booktalk@example.com">
+          <p class="field__error"></p>
+        </div>
+        <div class="field">
+          <label for="suPassword">비밀번호 <span class="req">*</span></label>
+          <div class="login__pw">
+            <input type="password" id="suPassword" name="password" autocomplete="new-password" maxlength="64" placeholder="영문 · 숫자 포함 8자 이상">
+            <button type="button" class="login__pw-toggle" data-pw-toggle="suPassword" aria-label="비밀번호 보기" aria-pressed="false">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            </button>
+          </div>
+          <p class="field__error"></p>
+        </div>
+        <div class="field">
+          <label for="suPassword2">비밀번호 확인 <span class="req">*</span></label>
+          <input type="password" id="suPassword2" name="password2" autocomplete="new-password" maxlength="64" placeholder="비밀번호를 한 번 더 입력">
+          <p class="field__error"></p>
+        </div>
+        <div class="field">
+          <label for="suNickname">닉네임 <span class="req">*</span></label>
+          <input type="text" id="suNickname" name="nickname" autocomplete="nickname" maxlength="12" placeholder="2~12자 (커뮤니티에 표시돼요)">
+          <p class="field__error"></p>
+        </div>
+
+        <fieldset class="choice-group">
+          <legend>관심 분야 <span class="signup__opt">(선택 · 여러 개 가능)</span></legend>
+          <div class="choice-chips" id="suCategories"></div>
+        </fieldset>
+
+        <div class="signup__terms">
+          <label class="agree signup__all">
+            <input type="checkbox" id="suAgreeAll">
+            <span>약관에 모두 동의합니다.</span>
+          </label>
+          <label class="agree">
+            <input type="checkbox" name="agreeTerms" data-agree required>
+            <span>이용약관 동의 <span class="req">(필수)</span></span>
+          </label>
+          <label class="agree">
+            <input type="checkbox" name="agreePrivacy" data-agree required>
+            <span>개인정보 수집 · 이용 동의 <span class="req">(필수)</span></span>
+          </label>
+          <label class="agree">
+            <input type="checkbox" name="agreeMarketing" data-agree>
+            <span>새 책 · 독서모임 소식 받기 <span class="signup__opt">(선택)</span></span>
+          </label>
+          <p class="field__error" id="agreeError"></p>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block" id="signupSubmit">가입하기</button>
+        <p class="login__status" id="signupStatus" role="status" aria-live="polite" hidden></p>
+
+        <p class="login__join">이미 회원이신가요? <a href="login.html" class="login__link">로그인</a></p>
+      </form>
+
+      <!-- 가입 완료 (이메일 인증이 필요한 경우) -->
+      <div class="reg-form login__box signup__done" id="signupDone" hidden>
+        <img src="../img/logo.svg" alt="" class="login__mark" width="56" height="56">
+        <h2 class="login__title">인증 메일을 보냈어요</h2>
+        <p class="login__desc"><strong id="doneEmail"></strong> 메일함에서 인증 링크를 누르면 가입이 끝나요.<br>인증 후 로그인해 주세요.</p>
+        <a href="login.html" class="btn btn--primary btn--block">로그인하러 가기</a>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <div class="inner footer__inner">
+      <div class="footer__brand">
+        <p class="logo logo--footer">북<span>톡</span></p>
+        <p>책으로 나누는 이야기, 북톡</p>
+      </div>
+      <ul class="footer__links">
+        <li><a href="about.html">서비스 소개</a></li>
+        <li><a href="terms.html">이용약관</a></li>
+        <li><a href="privacy.html"><strong>개인정보처리방침</strong></a></li>
+        <li><a href="support.html">고객센터</a></li>
+      </ul>
+      <div class="footer__bottom">
+        <address class="footer__info">
+          (주)북톡 · 서울특별시 마포구 책방로 12 · 고객센터 02-000-0000<br>
+          &copy; 2026 BookTalk. All rights reserved.
+        </address>
+        <!-- SNS 링크: 실제 계정 주소가 생기면 href를 바꿔주세요 -->
+        <ul class="footer__sns">
+          <li>
+            <a href="#" target="_blank" rel="noopener" class="sns-btn sns-btn--kakao">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3.5c-5 0-9 3.1-9 7 0 2.5 1.7 4.7 4.2 5.9l-.9 3.4c-.1.3.3.6.6.4l4-2.7c.4 0 .7.1 1.1.1 5 0 9-3.1 9-7s-4-7.1-9-7.1z" fill="currentColor"/></svg>
+              카카오톡 문의
+            </a>
+          </li>
+          <li>
+            <a href="#" target="_blank" rel="noopener" class="sns-btn sns-btn--insta">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+              인스타그램
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 알림 토스트 / 맨 위로 -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <button type="button" class="top-btn" id="topBtn" aria-label="맨 위로">&uarr;</button>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/common.js"></script>
+  <!-- Supabase 연결 라이브러리 (회원가입 → Supabase Auth · profiles 테이블) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="../js/supabase-client.js"></script>
+  <script src="../js/signup.js"></script>
+</body>
+</html>

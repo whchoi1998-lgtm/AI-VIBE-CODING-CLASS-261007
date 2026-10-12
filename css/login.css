@@ -1,0 +1,55 @@
+/* ==========================================================
+   북톡 로그인 페이지 (html/login.html) 전용 스타일
+   (입력 양식 · 버튼 · 양식 상자는 common.css 공용)
+   ========================================================== */
+
+.login {
+  padding: 72px 0 96px;
+  background: linear-gradient(180deg, #f3e9dc 0, var(--color-bg) 320px);
+}
+.login__box { max-width: 440px; margin: 0 auto; padding: 40px; }
+
+.login__mark { display: block; width: 56px; height: 56px; margin: 0 auto 16px; }
+.login__title { font-size: var(--fs-h3); text-align: center; }
+.login__desc { margin: 6px 0 28px; font-size: var(--fs-small); color: var(--color-sub); text-align: center; }
+
+/* 비밀번호 보기 버튼 (입력창 오른쪽 안) */
+.login__pw { position: relative; }
+.login__pw input { padding-right: 48px; }
+.login__pw-toggle {
+  position: absolute; top: 50%; right: 6px; transform: translateY(-50%);
+  display: grid; place-items: center; width: 36px; height: 36px; border-radius: var(--radius-sm);
+  color: var(--color-sub); transition: background .2s, color .2s;
+}
+.login__pw-toggle:hover { background: var(--color-line); color: var(--color-text); }
+.login__pw-toggle[aria-pressed="true"] { color: var(--color-primary); }
+
+/* 이메일 기억하기 · 비밀번호 찾기 */
+.login__options { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 4px 0 20px; }
+.login__options .agree { margin: 0; }
+.login__link { font-size: var(--fs-small); color: var(--color-sub); text-decoration: underline; text-underline-offset: 3px; }
+.login__link:hover { color: var(--color-primary); }
+
+/* 로그인 결과 안내 */
+.login__status { margin-top: 14px; padding: 12px 14px; border-radius: var(--radius-sm); font-size: var(--fs-small); }
+.login__status.is-success { background: #eef1ec; color: var(--color-point); }
+.login__status.is-error { background: #fdf3f2; color: #d0342c; }
+
+/* 구분선 + 카카오 로그인 */
+.login__divider {
+  display: flex; align-items: center; gap: 12px; margin: 24px 0 16px;
+  font-size: var(--fs-meta); color: var(--color-sub);
+}
+.login__divider::before, .login__divider::after { content: ''; flex: 1; height: 1px; background: var(--color-line); }
+.login__box .btn { margin-top: 0; } /* 공용 .reg-form .btn 위 여백 대신 각 영역 여백 사용 */
+.login__kakao { background: #fee500; color: #191919; }  /* 카카오 공식 노란색 */
+.login__kakao:hover { background: #f2d900; }
+
+.login__join { margin-top: 24px; font-size: var(--fs-small); color: var(--color-sub); text-align: center; }
+.login__join .login__link { color: var(--color-text); font-weight: var(--fw-semibold); }
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 640px) {
+  .login { padding: 40px 0 64px; }
+  .login__box { padding: 32px 20px; }
+}

@@ -7,7 +7,7 @@
   <title>분야별 도서 | 북톡</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/category.css">
 </head>
@@ -17,6 +17,7 @@
   <div class="topbar">
     <div class="inner topbar__inner">
       <ul class="util-menu">
+        <li><a href="login.html">로그인</a></li>
         <li><a href="about.html">서비스 소개</a></li>
         <li><a href="support.html">문의하기</a></li>
         <li>
@@ -173,6 +174,9 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <button type="button" class="top-btn" id="topBtn" aria-label="맨 위로">&uarr;</button>
 
+  <!-- Supabase 연결: 라이브러리(CDN) → 연결 정보(supabase-client.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="../js/supabase-client.js"></script>
   <script src="../js/data.js"></script>
   <script src="../js/common.js"></script>
   <script src="../js/category.js"></script>

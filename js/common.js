@@ -230,9 +230,51 @@ function initPreviewModal() {
   });
 }
 
+/* ---------- 회원 (회원가입 · 로그인 · 마이페이지 공용) ---------- */
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// 비밀번호 규칙: 8자 이상, 영문 · 숫자 포함 → 문제가 있으면 안내 문구, 없으면 ''
+function passwordProblem(pw) {
+  if (!pw) return '비밀번호를 입력해 주세요.';
+  if (pw.length < 8) return '비밀번호는 8자 이상이어야 해요.';
+  if (!/[A-Za-z]/.test(pw) || !/\d/.test(pw)) return '영문과 숫자를 함께 넣어 주세요.';
+  return '';
+}
+
+// 관심 분야 선택 칩 (분야 이름을 값으로 저장)
+function categoryChipsHTML(name, selected = []) {
+  return CATEGORIES.filter(c => c.id !== 'all').map(c => `
+    <label><input type="checkbox" name="${name}" value="${escapeHTML(c.name)}" ${selected.includes(c.name) ? 'checked' : ''}><span>${escapeHTML(c.name)}</span></label>`).join('');
+}
+
+// 최상단 바: 로그인하면 '로그인' → '마이페이지' + '로그아웃'
+async function updateAuthMenu() {
+  const db = window.supabaseClient;
+  const loginLink = document.querySelector('.util-menu a[href$="login.html"]');
+  if (!db || !loginLink) return;
+
+  const { data: { session } } = await db.auth.getSession();
+  if (!session) return;
+
+  loginLink.textContent = '마이페이지';
+  loginLink.href = pagePath('mypage.html');
+  if (/mypage\.html$/.test(location.pathname)) loginLink.setAttribute('aria-current', 'page');
+  else loginLink.removeAttribute('aria-current');
+
+  const li = document.createElement('li');
+  li.innerHTML = '<a href="#" data-logout>로그아웃</a>';
+  loginLink.closest('li').after(li);
+  li.querySelector('a').addEventListener('click', async e => {
+    e.preventDefault();
+    await db.auth.signOut();
+    location.href = `${ROOT}index.html`;
+  });
+}
+
 /* ---------- 헤더 / 메뉴 / 맨 위로 ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   initPreviewModal();
+  updateAuthMenu();
 
   const header = document.getElementById('header');
   const topBtn = document.getElementById('topBtn');

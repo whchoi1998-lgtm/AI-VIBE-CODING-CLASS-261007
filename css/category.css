@@ -8,7 +8,7 @@
 .cat-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .cat-card {
   position: relative; display: flex; flex-direction: column; height: 100%;
-  border: 1px solid var(--color-line); border-radius: 16px; background: var(--color-surface);
+  border: 1px solid var(--color-line); border-radius: var(--radius); background: var(--color-surface);
   overflow: hidden; transition: box-shadow .2s, transform .2s;
 }
 .cat-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
@@ -34,10 +34,10 @@
 .cat-card__covers .cover__title { font-size: 9px; }
 .cat-card__covers .cover__author, .cat-card__covers .cover__deco { display: none; }
 
-.cat-card__body { padding: 22px 24px 24px; }
-.cat-card__name { font-family: var(--font-serif); font-size: 22px; }
-.cat-card__desc { margin-top: 4px; color: var(--color-sub); font-size: 15px; }
-.cat-card__meta { display: flex; gap: 14px; margin-top: 12px; font-size: 14px; font-weight: 700; }
+.cat-card__body { padding: var(--card-pad); }
+.cat-card__name { font-size: var(--fs-h4); }
+.cat-card__desc { margin-top: 4px; color: var(--color-sub); font-size: var(--fs-ui); }
+.cat-card__meta { display: flex; gap: 14px; margin-top: 12px; font-size: var(--fs-small); font-weight: var(--fw-bold); }
 .cat-card__meta span:last-child { color: var(--color-star); }
 .cat-card__arrow {
   position: absolute; right: 20px; bottom: 22px; width: 36px; height: 36px; border-radius: 50%;
@@ -48,7 +48,7 @@
 /* ---------- 분야별 추천 도서 ---------- */
 .cat-section { scroll-margin-top: var(--header-h); }
 .cat-section--alt { background: var(--color-surface); }
-.cat-section__eyebrow { font-family: var(--font-serif); font-size: 15px; font-weight: 700; letter-spacing: 1px; }
+.cat-section__eyebrow { font-size: var(--fs-ui); font-weight: var(--fw-bold); letter-spacing: 1px; }
 .cat-section .section__head { align-items: flex-end; }
 
 /* ---------- 반응형 ---------- */

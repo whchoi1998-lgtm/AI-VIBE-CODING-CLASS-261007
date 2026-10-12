@@ -1,0 +1,22 @@
+/* ==========================================================
+   북톡 회원가입 페이지 (html/signup.html) 전용 스타일
+   (로그인 상자 · 비밀번호 보기 · 결과 안내는 login.css,
+    입력 양식 · 관심 분야 칩은 common.css 공용)
+   ========================================================== */
+
+.signup__box { max-width: 480px; }
+.signup__opt { color: var(--color-sub); font-weight: var(--fw-regular); }
+
+/* 약관 동의 */
+.signup__terms {
+  margin: 4px 0 20px; padding: 16px 18px; border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm); background: var(--color-bg);
+}
+.signup__terms .agree { margin: 0; }
+.signup__terms .agree + .agree { margin-top: 8px; }
+.signup__all { padding-bottom: 12px; margin-bottom: 12px !important; border-bottom: 1px solid var(--color-line); font-weight: var(--fw-semibold); }
+.signup__terms .field__error { margin-top: 8px; }
+
+/* 가입 완료 안내 */
+.signup__done { text-align: center; }
+.signup__done .login__desc strong { color: var(--color-text); }
